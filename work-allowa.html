@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALLOWA — Elouan BEGUE</title>
+  <meta name="description" content="Allowa case study — Real estate platform connecting owners to the best agents. UI/UX Design by Elouan BEGUE.">
+  <meta property="og:title" content="ALLOWA — Elouan BEGUE">
+  <meta property="og:description" content="Allowa case study — Real estate platform connecting owners to the best agents. UI/UX Design by Elouan BEGUE.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/work-allowa.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/project-allowa-overlay.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/work-allowa.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "ALLOWA",
+  "description": "Allowa case study — Real estate platform connecting owners to the best agents. UI/UX Design.",
+  "creator": {
+    "@type": "Person",
+    "name": "Elouan BEGUE"
+  },
+  "url": "https://elouanbegue.com/work-allowa.html"
+}
+</script>
+  <style>
+    /* ===== ALLOWA CASE STUDY ===== */
+
+    /* -- Page overrides -- */
+    body {
+      background: #fff;
+    }
+
+    /* -- Header blend mode -- */
+    .header {
+      mix-blend-mode: difference;
+    }
+
+    /* -- Header dark text variant -- */
+    .header--dark .header-left span,
+    .header--dark .header-right span {
+      color: var(--black);
+    }
+    .header--dark .logo path {
+      fill: var(--black);
+    }
+    .header--dark.scrolled .header-left span,
+    .header--dark.scrolled .header-right span {
+      color: var(--white);
+    }
+    .header--dark.scrolled .logo path {
+      fill: var(--white);
+    }
+
+    /* -- Case Hero -- */
+    .case-hero {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      height: 500px;
+      overflow: hidden;
+    }
+    .case-hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+    }
+    .case-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-hero__logo {
+      width: 260px;
+      height: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s ease .3s forwards;
+    }
+
+    /* -- Bottom Menu (white variant) -- */
+    .case-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      isolation: isolate;
+      background: #fff;
+      border-top: 1px solid rgba(34,34,34,.08);
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease;
+    }
+    .case-menu.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .case-menu__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 15px var(--side-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .case-menu__left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .case-menu__left span {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .case-menu__left span:last-child {
+      color: var(--grey);
+      font-weight: 400;
+    }
+    .case-menu__links {
+      display: flex;
+      gap: 40px;
+    }
+    .case-menu__link {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color .3s ease;
+      cursor: pointer;
+    }
+    .case-menu__link:hover,
+    .case-menu__link.active {
+      color: var(--black);
+    }
+    .case-menu__follow {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: opacity .3s ease;
+      cursor: pointer;
+    }
+    .case-menu__follow:hover { opacity: .6; }
+
+    /* -- Project Info Block -- */
+    .case-info {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px var(--side-padding);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .case-info__label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .case-info__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .case-info__date {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--grey);
+      margin-bottom: 24px;
+    }
+    .case-info__desc {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+    .case-info__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+    .case-info__meta-item {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    /* -- Mission Section -- */
+    .case-mission {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--side-padding) 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .case-mission__label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .case-mission__text {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.6;
+      max-width: 460px;
+    }
+    .case-mission__img {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .case-mission__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-mission__img:hover img {
+      transform: scale(1.03);
+    }
+
+    /* -- Gallery -- */
+    .case-gallery {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--side-padding);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    /* Blue banner */
+    .case-banner {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #2B5BA8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-banner__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .18;
+      mix-blend-mode: luminosity;
+    }
+    .case-banner__logo {
+      position: relative;
+      z-index: 2;
+      width: 220px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Two column */
+    .case-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+    .case-col-img {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 480px;
+    }
+    .case-col-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-col-img:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Full width image */
+    .case-full-img {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 460px;
+    }
+    .case-full-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-full-img:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Grid of 4 */
+    .case-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: var(--gap);
+    }
+    .case-grid-4__item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 360px;
+      background: #f4f4f4;
+    }
+    .case-grid-4__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-grid-4__item:hover img {
+      transform: scale(1.03);
+    }
+
+    /* -- Next Project -- */
+    .case-next {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 120px var(--side-padding) 140px;
+      text-align: center;
+    }
+    .case-next__label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .case-next__link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .case-next__link:hover {
+      transform: scale(1.05);
+    }
+    .case-next__logo {
+      width: 160px;
+      height: auto;
+    }
+
+    /* -- Reveal animations -- */
+    .cs-reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+    }
+    .cs-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children in grid-4 */
+    .case-grid-4.cs-reveal .case-grid-4__item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-grid-4.cs-reveal.visible .case-grid-4__item:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.0s; }
+    .case-grid-4.cs-reveal.visible .case-grid-4__item:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.1s; }
+    .case-grid-4.cs-reveal.visible .case-grid-4__item:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.2s; }
+    .case-grid-4.cs-reveal.visible .case-grid-4__item:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.3s; }
+
+    /* Two-col stagger */
+    .case-two-col.cs-reveal .case-col-img {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .case-two-col.cs-reveal.visible .case-col-img:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0s; }
+    .case-two-col.cs-reveal.visible .case-col-img:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.1s; }
+
+    /* -- Responsive -- */
+    @media (max-width: 768px) {
+      .case-hero { height: 360px; }
+      .case-hero__logo { width: 180px; }
+      .case-info {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 48px var(--side-padding);
+      }
+      .case-info__title { font-size: 32px; }
+      .case-mission {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-bottom: 48px;
+      }
+      .case-two-col { grid-template-columns: 1fr; }
+      .case-col-img { height: 320px; }
+      .case-grid-4 { grid-template-columns: 1fr; }
+      .case-grid-4__item { height: 280px; }
+      .case-banner { height: 360px; }
+      .case-full-img { height: 320px; }
+      .case-next { padding: 80px var(--side-padding) 120px; }
+
+      .case-menu__left,
+      .case-menu__follow { display: none; }
+      .case-menu__inner { justify-content: center; }
+      .case-menu__links { gap: 16px; }
+
+      .cursor { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .case-hero { height: 280px; }
+      .case-hero__logo { width: 140px; }
+      .case-col-img { height: 240px; }
+      .case-grid-4__item { height: 220px; }
+      .case-banner { height: 280px; }
+      .case-full-img { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    <span class="cursor-text">VIEW</span>
+  </div>
+
+  <!-- HEADER (dark text variant) -->
+  <header class="header header--dark" id="header">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left">
+        <span>Open for any</span>
+        <span>collaborations and offers</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="#222222"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="case-hero">
+    <img src="assets/project-allowa-bg.jpg" alt="Allowa hero" class="case-hero__img" id="heroImg" width="1512" height="500">
+    <div class="case-hero__overlay">
+      <img src="assets/allowa-logo.svg" alt="Allowa" class="case-hero__logo" width="260" height="60">
+    </div>
+  </section>
+
+  <!-- BOTTOM MENU -->
+  <nav class="case-menu" id="caseMenu">
+    <div class="case-menu__inner">
+      <div class="case-menu__left">
+        <span>ALLOWA</span>
+        <span>PROJECT : [04]</span>
+      </div>
+      <div class="case-menu__links">
+        <a href="index.html" class="case-menu__link">ABOUT</a>
+        <a href="work.html" class="case-menu__link active">WORK</a>
+        <a href="playground.html" class="case-menu__link">PLAYGROUND</a>
+        <a href="contact.html" class="case-menu__link">CONTACT</a>
+      </div>
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener" class="case-menu__follow">FOLLOW ME &#x2197;</a>
+    </div>
+  </nav>
+
+  <!-- PROJECT INFO -->
+  <section class="case-info cs-reveal">
+    <div class="case-info__left">
+      <p class="case-info__label">FREELANCE</p>
+      <h1 class="case-info__title">Allowa</h1>
+      <p class="case-info__date">6 mois / 2022-2023</p>
+      <p class="case-info__desc">Allowa is a real-estate platform connecting particular owners to the agents that fit the best their needs. Created by Sholders, a digital agency based in Barcelona, Allowa enables a trustworthy and efficient real estate transaction.</p>
+    </div>
+    <div class="case-info__meta">
+      <span class="case-info__meta-item">PARIS</span>
+      <span class="case-info__meta-item">FREELANCE</span>
+      <span class="case-info__meta-item">01/05/2022</span>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="case-mission cs-reveal">
+    <div>
+      <p class="case-mission__label">MISSION</p>
+      <p class="case-mission__text">The aim is to use the rebranding created by One agency to create the new web design.</p>
+    </div>
+    <div class="case-mission__img">
+      <img src="assets/project-allowa-overlay.jpg" alt="Allowa mission" loading="lazy" width="680" height="400">
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="case-gallery">
+
+    <!-- 1. Blue banner -->
+    <div class="case-banner cs-reveal">
+      <img src="assets/project-allowa-overlay.jpg" alt="Allowa screens" class="case-banner__bg" loading="lazy" width="1512" height="520">
+      <img src="assets/allowa-logo.svg" alt="Allowa" class="case-banner__logo" loading="lazy" width="220" height="50">
+    </div>
+
+    <!-- 2. Two-column mobile mockups -->
+    <div class="case-two-col cs-reveal">
+      <div class="case-col-img">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa mobile view 1" loading="lazy" width="680" height="480" style="object-position: left center;">
+      </div>
+      <div class="case-col-img">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa mobile view 2" loading="lazy" width="680" height="480" style="object-position: right center;">
+      </div>
+    </div>
+
+    <!-- 3. Full-width billboard -->
+    <div class="case-full-img cs-reveal">
+      <img src="assets/project-allowa-bg.jpg" alt="Allowa billboard" loading="lazy" width="1512" height="460">
+    </div>
+
+    <!-- 4. Grid of 4 -->
+    <div class="case-grid-4 cs-reveal">
+      <div class="case-grid-4__item">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa screen 1" loading="lazy" width="680" height="360" style="object-position: top left;">
+      </div>
+      <div class="case-grid-4__item">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa screen 2" loading="lazy" width="680" height="360" style="object-position: top right;">
+      </div>
+      <div class="case-grid-4__item">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa screen 3" loading="lazy" width="680" height="360" style="object-position: bottom left;">
+      </div>
+      <div class="case-grid-4__item">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa screen 4" loading="lazy" width="680" height="360" style="object-position: bottom right;">
+      </div>
+    </div>
+
+    <!-- 5. Two-column web screens -->
+    <div class="case-two-col cs-reveal">
+      <div class="case-col-img">
+        <img src="assets/project-allowa-overlay.jpg" alt="Allowa web screen 1" loading="lazy" width="680" height="480" style="object-position: center top;">
+      </div>
+      <div class="case-col-img">
+        <img src="assets/project-allowa-bg.jpg" alt="Allowa web screen 2" loading="lazy" width="680" height="480" style="object-position: center bottom;">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEXT PROJECT -->
+  <section class="case-next cs-reveal">
+    <p class="case-next__label">Next Project</p>
+    <a href="work-tetu.html" class="case-next__link">
+      <img src="assets/tetu-logo.svg" alt="TETU" class="case-next__logo" loading="lazy" width="160" height="56">
+    </a>
+  </section>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    /* ===== ALLOWA CASE STUDY — INLINE JS ===== */
+
+    // -- Custom cursor --
+    const cursor = document.getElementById('cursor');
+    let cursorX = 0, cursorY = 0, clientX = 0, clientY = 0;
+
+    document.addEventListener('mousemove', e => {
+      clientX = e.clientX;
+      clientY = e.clientY;
+    });
+
+    function updateCursor() {
+      cursorX += (clientX - cursorX) * 0.15;
+      cursorY += (clientY - cursorY) * 0.15;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      requestAnimationFrame(updateCursor);
+    }
+    updateCursor();
+
+    // Hover states
+    const hoverTargets = document.querySelectorAll('a, .case-col-img, .case-full-img, .case-banner, .case-grid-4__item, .case-next__link');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // -- Header scroll state --
+    const header = document.getElementById('header');
+    const heroSection = document.querySelector('.case-hero');
+    let lastScroll = 0;
+
+    function handleHeaderScroll() {
+      const scrollY = window.scrollY;
+      const heroBottom = heroSection.offsetHeight;
+
+      if (scrollY > heroBottom - 60) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      lastScroll = scrollY;
+    }
+
+    // -- Bottom menu visibility --
+    const caseMenu = document.getElementById('caseMenu');
+
+    function handleMenuVisibility() {
+      if (window.scrollY > 300) {
+        caseMenu.classList.add('visible');
+      } else {
+        caseMenu.classList.remove('visible');
+      }
+    }
+
+    // -- Parallax hero --
+    const heroImg = document.getElementById('heroImg');
+
+    function handleParallax() {
+      const scrollY = window.scrollY;
+      const heroH = heroSection.offsetHeight;
+      if (scrollY < heroH) {
+        const offset = scrollY * 0.35;
+        heroImg.style.transform = `translateY(${offset}px) scale(1.05)`;
+      }
+    }
+
+    // -- Scroll reveal --
+    const revealEls = document.querySelectorAll('.cs-reveal');
+
+    function handleReveal() {
+      const trigger = window.innerHeight * 0.88;
+      revealEls.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // -- Unified scroll handler --
+    function onScroll() {
+      handleHeaderScroll();
+      handleMenuVisibility();
+      handleParallax();
+      handleReveal();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', handleReveal);
+
+    // Initial calls
+    window.addEventListener('DOMContentLoaded', () => {
+      onScroll();
+      // Header fade in
+      header.style.opacity = '0';
+      setTimeout(() => {
+        header.style.transition = 'opacity .8s ease, background-color .4s ease, backdrop-filter .4s ease';
+        header.style.opacity = '1';
+      }, 200);
+    });
+  </script>
+</body>
+</html>

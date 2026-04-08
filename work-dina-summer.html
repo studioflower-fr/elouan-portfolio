@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DINA SUMMER — Elouan BEGUE</title>
+  <meta name="description" content="Dina Summer branding case study. Lead branding for Berlin music artist — social media, posters, merch design.">
+  <meta property="og:title" content="DINA SUMMER — Elouan BEGUE">
+  <meta property="og:description" content="Dina Summer branding case study. Lead branding for Berlin music artist — social media, posters, merch design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/work-dina-summer.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/project-dinna.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/work-dina-summer.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Dina Summer",
+  "description": "Dina Summer branding case study. Lead branding for Berlin music artist — social media, posters, merch design.",
+  "creator": {
+    "@type": "Person",
+    "name": "Elouan BEGUE"
+  },
+  "url": "https://elouanbegue.com/work-dina-summer.html"
+}
+</script>
+  <style>
+    /* ---- PAGE OVERRIDES (dark theme) ---- */
+    body {
+      background: #161616;
+      color: #fff;
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      background: transparent;
+      mix-blend-mode: difference;
+    }
+    .header.scrolled {
+      background: rgba(22,22,22,0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    /* ---- HERO ---- */
+    .ds-hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 945px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ds-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/project-dinna.jpg') center/cover no-repeat;
+      transform: scale(1.05);
+      animation: heroZoom 1.6s ease-out forwards;
+    }
+    .ds-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+    }
+    .ds-hero-title {
+      position: relative;
+      z-index: 2;
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: clamp(48px, 10vw, 140px);
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      text-align: center;
+      line-height: 1;
+      overflow: hidden;
+    }
+    .ds-hero-title .letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(100%);
+      animation: letterReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes letterReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---- BOTTOM MENU BAR ---- */
+    .ds-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: #363636;
+      isolation: isolate;
+      padding: 15px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+    .ds-bottom-bar.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .ds-bar-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ds-bar-left span {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .ds-bar-left span:last-child {
+      color: #868686;
+    }
+    .ds-bar-center {
+      display: flex;
+      gap: 40px;
+    }
+    .ds-bar-center a {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .ds-bar-center a.active {
+      color: #fff;
+    }
+    .ds-bar-center a:hover {
+      color: #fff;
+    }
+    .ds-bar-right a {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .ds-bar-right a:hover {
+      opacity: 0.7;
+    }
+
+    /* ---- PROJECT INFO BLOCK ---- */
+    .ds-info {
+      max-width: 1384px;
+      margin: 0 auto;
+      padding: 120px 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .ds-info-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ds-info-tag {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .ds-info-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .ds-info-duration {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #868686;
+      letter-spacing: 1px;
+    }
+    .ds-info-desc {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 16px;
+      color: #b0b0b0;
+      line-height: 1.7;
+      max-width: 480px;
+    }
+    .ds-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      padding-top: 30px;
+    }
+    .ds-info-right span {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ---- CONTENT SECTIONS ---- */
+    .ds-section {
+      max-width: 1384px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+    .ds-section-full {
+      width: 100%;
+      padding: 0;
+    }
+
+    /* Two-column concert photos */
+    .ds-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .ds-photo {
+      position: relative;
+      height: 520px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ds-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .ds-photo:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Neon text section */
+    .ds-neon-section {
+      width: 100%;
+      padding: 140px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      margin: 80px 0;
+    }
+    .ds-neon-text {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      color: #fff;
+      text-align: center;
+      text-shadow:
+        0 0 10px #ff00ff,
+        0 0 40px #ff00ff,
+        0 0 80px #ff00ff,
+        0 0 120px #8b00ff;
+      animation: neonPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes neonPulse {
+      0% {
+        text-shadow:
+          0 0 10px #ff00ff,
+          0 0 40px #ff00ff,
+          0 0 80px #ff00ff,
+          0 0 120px #8b00ff;
+      }
+      100% {
+        text-shadow:
+          0 0 5px #ff00ff,
+          0 0 20px #ff00ff,
+          0 0 60px #ff00ff,
+          0 0 80px #8b00ff;
+      }
+    }
+
+    /* Logo variations grid */
+    .ds-logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .ds-logo-cell {
+      height: 280px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+      overflow: hidden;
+    }
+    .ds-logo-cell:hover {
+      border-color: #ff00ff;
+      transform: translateY(-4px);
+    }
+    .ds-logo-cell .logo-text {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: #fff;
+      text-align: center;
+      line-height: 1.3;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    /* Outlined */
+    .ds-logo-cell.style-outlined .logo-text {
+      -webkit-text-stroke: 1.5px #fff;
+      color: transparent;
+      font-size: 32px;
+      letter-spacing: 8px;
+    }
+    /* Filled bold */
+    .ds-logo-cell.style-filled .logo-text {
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: 4px;
+    }
+    /* Script / serif italic */
+    .ds-logo-cell.style-script .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      letter-spacing: 4px;
+      text-transform: none;
+    }
+    /* Geometric / condensed */
+    .ds-logo-cell.style-geometric .logo-text {
+      font-weight: 300;
+      font-size: 24px;
+      letter-spacing: 16px;
+    }
+    /* Neon style */
+    .ds-logo-cell.style-neon {
+      background: #0a0a0a;
+    }
+    .ds-logo-cell.style-neon .logo-text {
+      text-shadow:
+        0 0 8px #ff00ff,
+        0 0 30px #ff00ff;
+      font-size: 26px;
+      letter-spacing: 8px;
+    }
+    /* Distorted / stacked */
+    .ds-logo-cell.style-distorted .logo-text {
+      font-size: 20px;
+      letter-spacing: 12px;
+      position: relative;
+    }
+    .ds-logo-cell.style-distorted .logo-text-ghost {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      color: rgba(255, 0, 255, 0.3);
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      text-align: center;
+      line-height: 1.3;
+      pointer-events: none;
+    }
+
+    /* Full-width photo */
+    .ds-full-photo {
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .ds-full-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-full-photo:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Merch / T-shirt mockups */
+    .ds-merch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 80px;
+    }
+    .ds-tshirt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      background: #1e1e1e;
+      border-radius: 8px;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-tshirt:hover {
+      transform: perspective(600px) rotateY(5deg) rotateX(-3deg);
+    }
+    .ds-tshirt-shape {
+      width: 220px;
+      height: 260px;
+      background: #fff;
+      border-radius: 4px 4px 8px 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .ds-tshirt-neck {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 30px;
+      background: #fff;
+      border-radius: 0 0 50% 50%;
+    }
+    .ds-tshirt-sleeves {
+      position: absolute;
+      top: 0;
+      width: 280px;
+      height: 40px;
+      background: #fff;
+      border-radius: 4px 4px 0 0;
+      z-index: -1;
+    }
+    .ds-tshirt-logo {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #161616;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .ds-tshirt-logo.neon-print {
+      color: #ff00ff;
+      text-shadow: 0 0 6px rgba(255,0,255,0.3);
+    }
+    .ds-tshirt-label {
+      margin-top: 24px;
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Social media templates */
+    .ds-social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .ds-social-card {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-social-card:hover {
+      transform: scale(1.04);
+    }
+    .ds-social-card:nth-child(1) {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border: 1px solid #2a2a4a;
+    }
+    .ds-social-card:nth-child(2) {
+      background: linear-gradient(135deg, #0a0a0a, #1a0a1a);
+      border: 1px solid #3a1a3a;
+    }
+    .ds-social-card:nth-child(3) {
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      border: 1px solid #3a3a3a;
+    }
+    .ds-social-card:nth-child(4) {
+      background: linear-gradient(135deg, #0d0d1a, #1a0d2e);
+      border: 1px solid #2a1a4a;
+    }
+    .ds-social-title {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .ds-social-sub {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .ds-social-card:nth-child(2) .ds-social-title {
+      text-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff;
+    }
+    .ds-social-accent {
+      width: 40px;
+      height: 2px;
+      background: #ff00ff;
+      margin: 12px 0;
+      border-radius: 1px;
+    }
+
+    /* Final concert full-width */
+    .ds-final-photo {
+      width: 100%;
+      height: 700px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 0;
+    }
+    .ds-final-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .ds-final-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(22,22,22,0.9) 100%);
+      pointer-events: none;
+    }
+
+    /* ---- NEXT PROJECT ---- */
+    .ds-next {
+      padding: 120px 64px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .ds-next-label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .ds-next-name {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      transition: color 0.3s, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .ds-next-name:hover {
+      color: #ff00ff;
+      letter-spacing: 12px;
+    }
+    .ds-next-star {
+      margin-top: 20px;
+    }
+    .ds-next-star svg {
+      opacity: 0.3;
+    }
+
+    /* ---- SCROLL REVEAL ---- */
+    .ds-reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .ds-stagger > * {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .ds-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+    .ds-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
+    .ds-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
+    .ds-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
+    .ds-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
+    .ds-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+
+    /* Parallax helper */
+    .ds-parallax-img {
+      will-change: transform;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .ds-info {
+        padding: 100px 32px 60px;
+        gap: 40px;
+      }
+      .ds-section {
+        padding: 0 32px;
+      }
+      .ds-neon-section {
+        padding: 100px 32px;
+      }
+      .ds-photo {
+        height: 400px;
+      }
+      .ds-full-photo {
+        height: 450px;
+      }
+      .ds-final-photo {
+        height: 500px;
+      }
+      .ds-social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ds-bottom-bar {
+        padding: 15px 32px;
+      }
+      .ds-bar-center {
+        gap: 24px;
+      }
+      .ds-next {
+        padding: 100px 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cursor {
+        display: none;
+      }
+      .ds-hero {
+        min-height: 600px;
+      }
+      .ds-info {
+        grid-template-columns: 1fr;
+        padding: 80px 20px 60px;
+        gap: 40px;
+      }
+      .ds-info-right {
+        align-items: flex-start;
+        padding-top: 0;
+      }
+      .ds-section {
+        padding: 0 20px;
+      }
+      .ds-two-col {
+        grid-template-columns: 1fr;
+      }
+      .ds-photo {
+        height: 320px;
+      }
+      .ds-neon-section {
+        padding: 80px 20px;
+        margin: 40px 0;
+      }
+      .ds-logo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ds-full-photo {
+        height: 320px;
+      }
+      .ds-merch-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .ds-social-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .ds-final-photo {
+        height: 400px;
+      }
+      .ds-bottom-bar {
+        padding: 12px 20px;
+      }
+      .ds-bar-left,
+      .ds-bar-right {
+        display: none;
+      }
+      .ds-bar-center {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+      }
+      .ds-next {
+        padding: 80px 20px;
+      }
+      .ds-tshirt:hover,
+      .ds-social-card:hover,
+      .ds-logo-cell:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ds-photo {
+        height: 260px;
+      }
+      .ds-logo-grid {
+        grid-template-columns: 1fr;
+      }
+      .ds-social-grid {
+        grid-template-columns: 1fr;
+      }
+      .ds-logo-cell {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    <span class="cursor-text">VIEW</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Project : [05]</span>
+        <span>Berlin, 2022</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="ds-hero" id="hero">
+    <div class="ds-hero-bg"></div>
+    <div class="ds-hero-overlay"></div>
+    <h1 class="ds-hero-title" id="heroTitle">DINA SUMMER</h1>
+  </section>
+
+  <!-- BOTTOM MENU BAR -->
+  <nav class="ds-bottom-bar" id="bottomBar">
+    <div class="ds-bar-left">
+      <span>DINA SUMMER</span>
+      <span>PROJECT : [05]</span>
+    </div>
+    <div class="ds-bar-center">
+      <a href="index.html">ABOUT</a>
+      <a href="work.html" class="active">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="ds-bar-right">
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener">FOLLOW ME &#x2197;</a>
+    </div>
+  </nav>
+
+  <!-- PROJECT INFO -->
+  <section class="ds-info ds-reveal">
+    <div class="ds-info-left">
+      <span class="ds-info-tag">INTERNSHIP</span>
+      <h2 class="ds-info-title">Dina Summer</h2>
+      <span class="ds-info-duration">1 mois / Berlin 2022</span>
+      <p class="ds-info-desc">The projects and needs I met as lead branding, the first Dina Summer visual universe in graphics, from social media templates to poster, t-shirt.</p>
+    </div>
+    <div class="ds-info-right">
+      <span>BERLIN</span>
+      <span>INTERNSHIP</span>
+      <span>01/07/2022</span>
+    </div>
+  </section>
+
+  <!-- SECTION 1: Two-column concert photos -->
+  <div class="ds-section ds-reveal">
+    <div class="ds-two-col">
+      <div class="ds-photo">
+        <img src="assets/project-dinna.jpg" alt="Dina Summer live concert" loading="lazy" class="ds-parallax-img" width="680" height="520" style="object-position: left center;">
+      </div>
+      <div class="ds-photo">
+        <img src="assets/project-dinna.jpg" alt="Dina Summer stage performance" loading="lazy" class="ds-parallax-img" width="680" height="520" style="object-position: right center;">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Neon glow text -->
+  <div class="ds-neon-section ds-reveal">
+    <div class="ds-neon-text">DINA<br>SUMMER</div>
+  </div>
+
+  <!-- SECTION 3: Logo variations grid -->
+  <div class="ds-section ds-reveal ds-stagger">
+    <div class="ds-logo-grid">
+      <div class="ds-logo-cell style-outlined">
+        <span class="logo-text">DINA<br>SUMMER</span>
+      </div>
+      <div class="ds-logo-cell style-filled">
+        <span class="logo-text">DINA<br>SUMMER</span>
+      </div>
+      <div class="ds-logo-cell style-script">
+        <span class="logo-text">Dina<br>Summer</span>
+      </div>
+      <div class="ds-logo-cell style-geometric">
+        <span class="logo-text">DINA<br>SUMMER</span>
+      </div>
+      <div class="ds-logo-cell style-neon">
+        <span class="logo-text">DINA<br>SUMMER</span>
+      </div>
+      <div class="ds-logo-cell style-distorted">
+        <span class="logo-text">DINA<br>SUMMER</span>
+        <span class="logo-text-ghost">DINA<br>SUMMER</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Full-width concert photo -->
+  <div class="ds-full-photo ds-reveal">
+    <img src="assets/project-dinna.jpg" alt="Dina Summer live on stage" loading="lazy" class="ds-parallax-img" width="1512" height="600" style="object-position: center 30%;">
+  </div>
+
+  <!-- SECTION 5: T-shirt / merch mockups -->
+  <div class="ds-section ds-reveal">
+    <div class="ds-merch-grid">
+      <div class="ds-tshirt">
+        <div class="ds-tshirt-shape">
+          <div class="ds-tshirt-neck"></div>
+          <div class="ds-tshirt-sleeves"></div>
+          <span class="ds-tshirt-logo">DINA<br>SUMMER</span>
+        </div>
+        <span class="ds-tshirt-label">Front print - Classic</span>
+      </div>
+      <div class="ds-tshirt">
+        <div class="ds-tshirt-shape">
+          <div class="ds-tshirt-neck"></div>
+          <div class="ds-tshirt-sleeves"></div>
+          <span class="ds-tshirt-logo neon-print">DINA<br>SUMMER</span>
+        </div>
+        <span class="ds-tshirt-label">Front print - Neon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: Social media templates -->
+  <div class="ds-section ds-reveal ds-stagger">
+    <div class="ds-social-grid">
+      <div class="ds-social-card">
+        <span class="ds-social-title">DINA<br>SUMMER</span>
+        <div class="ds-social-accent"></div>
+        <span class="ds-social-sub">Instagram Post</span>
+      </div>
+      <div class="ds-social-card">
+        <span class="ds-social-title">LIVE<br>BERLIN</span>
+        <div class="ds-social-accent"></div>
+        <span class="ds-social-sub">Event Promo</span>
+      </div>
+      <div class="ds-social-card">
+        <span class="ds-social-title">NEW<br>RELEASE</span>
+        <div class="ds-social-accent"></div>
+        <span class="ds-social-sub">Story Template</span>
+      </div>
+      <div class="ds-social-card">
+        <span class="ds-social-title">TOUR<br>2022</span>
+        <div class="ds-social-accent"></div>
+        <span class="ds-social-sub">Carousel Slide</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: Final concert photography -->
+  <div class="ds-final-photo ds-reveal">
+    <img src="assets/project-dinna.jpg" alt="Dina Summer concert finale" loading="lazy" class="ds-parallax-img" width="1512" height="700" style="object-position: center 20%;">
+    <div class="ds-final-overlay"></div>
+  </div>
+
+  <!-- NEXT PROJECT -->
+  <div class="ds-next ds-reveal">
+    <span class="ds-next-label">Next Project</span>
+    <a href="work-norphe.html" class="ds-next-name">NORPHE</a>
+    <div class="ds-next-star">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    /* ---- CUSTOM CURSOR ---- */
+    const cursor = document.getElementById('cursor');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+    document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      cx += (mx - cx) * 0.15;
+      cy += (my - cy) * 0.15;
+      cursor.style.transform = 'translate3d(' + cx + 'px, ' + cy + 'px, 0)';
+      requestAnimationFrame(loop);
+    })();
+
+    /* Hover state on interactive elements */
+    var hoverEls = document.querySelectorAll('a, .ds-photo, .ds-tshirt, .ds-social-card, .ds-logo-cell');
+    for (var i = 0; i < hoverEls.length; i++) {
+      hoverEls[i].addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
+      hoverEls[i].addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
+    }
+
+    /* ---- HERO LETTER-BY-LETTER REVEAL ---- */
+    var heroTitle = document.getElementById('heroTitle');
+    var titleText = heroTitle.textContent.trim();
+    var fragment = document.createDocumentFragment();
+    var delay = 0;
+    for (var j = 0; j < titleText.length; j++) {
+      var span = document.createElement('span');
+      span.classList.add('letter');
+      if (titleText[j] === ' ') {
+        span.textContent = '\u00A0';
+        span.style.width = '0.3em';
+      } else {
+        span.textContent = titleText[j];
+      }
+      span.style.animationDelay = (0.4 + delay) + 's';
+      fragment.appendChild(span);
+      delay += 0.05;
+    }
+    heroTitle.textContent = '';
+    heroTitle.appendChild(fragment);
+
+    /* ---- BOTTOM BAR SHOW ON SCROLL ---- */
+    var bottomBar = document.getElementById('bottomBar');
+    var heroSection = document.getElementById('hero');
+    function checkBottomBar() {
+      var heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        bottomBar.classList.add('visible');
+      } else {
+        bottomBar.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', checkBottomBar, { passive: true });
+    checkBottomBar();
+
+    /* ---- HEADER SCROLL STATE ---- */
+    var header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    /* ---- SCROLL REVEAL ---- */
+    var revealEls = document.querySelectorAll('.ds-reveal');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      for (var k = 0; k < entries.length; k++) {
+        if (entries[k].isIntersecting) {
+          entries[k].target.classList.add('visible');
+        }
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    for (var m = 0; m < revealEls.length; m++) {
+      revealObserver.observe(revealEls[m]);
+    }
+
+    /* ---- PARALLAX ON IMAGES ---- */
+    var parallaxImages = document.querySelectorAll('.ds-parallax-img');
+    window.addEventListener('scroll', function() {
+      for (var p = 0; p < parallaxImages.length; p++) {
+        var rect = parallaxImages[p].getBoundingClientRect();
+        var windowH = window.innerHeight;
+        if (rect.top < windowH && rect.bottom > 0) {
+          var progress = (windowH - rect.top) / (windowH + rect.height);
+          var offset = (progress - 0.5) * 40;
+          parallaxImages[p].style.transform = 'translateY(' + offset + 'px)';
+        }
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>

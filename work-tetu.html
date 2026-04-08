@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TETU — Elouan BEGUE</title>
+  <meta name="description" content="TETU magazine case study — Editorial design, art direction, and web design by Elouan BEGUE.">
+  <meta property="og:title" content="TETU — Elouan BEGUE">
+  <meta property="og:description" content="TETU magazine case study — Editorial design, art direction, and web design by Elouan BEGUE.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/work-tetu.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/project-tetu.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/work-tetu.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "TETU",
+  "description": "TETU magazine case study — Editorial design, art direction, and web design.",
+  "creator": {
+    "@type": "Person",
+    "name": "Elouan BEGUE"
+  },
+  "url": "https://elouanbegue.com/work-tetu.html"
+}
+</script>
+  <style>
+    /* ====== TETU PROJECT PAGE ====== */
+
+    /* --- HERO --- */
+    .tetu-hero {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      height: 100vh;
+      min-height: 945px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tetu-hero-image-wrapper {
+      position: absolute;
+      inset: -60px 0 0 0;
+      overflow: hidden;
+    }
+
+    .tetu-hero-image {
+      width: 100%;
+      height: calc(100% + 120px);
+      background: url('assets/project-tetu.jpg') center / cover no-repeat;
+      transform: scale(1.05);
+      animation: heroZoom 1.5s ease-out forwards;
+      will-change: transform;
+    }
+
+    .tetu-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .tetu-hero-logo {
+      position: relative;
+      z-index: 2;
+      width: 200px;
+      height: auto;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.4s forwards;
+    }
+
+    /* --- BOTTOM MENU BAR --- */
+    .tetu-bottom-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: #363636;
+      isolation: isolate;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .tetu-bottom-menu.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .tetu-bottom-menu-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+      padding: 15px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tetu-menu-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tetu-menu-left span {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .tetu-menu-left span:last-child {
+      color: #868686;
+    }
+
+    .tetu-menu-center {
+      display: flex;
+      gap: 40px;
+    }
+
+    .tetu-menu-center a {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tetu-menu-center a:hover,
+    .tetu-menu-center a.active {
+      color: #fff;
+    }
+
+    .tetu-menu-right a {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tetu-menu-right a:hover {
+      opacity: 0.7;
+    }
+
+    /* --- PROJECT INFO BLOCK --- */
+    .tetu-info {
+      background: #fff;
+      padding: 100px 64px;
+      max-width: 1384px;
+      margin: 0 auto;
+    }
+
+    .tetu-info-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .tetu-info-left {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .tetu-info-type {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .tetu-info-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      font-style: italic;
+      color: #222;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .tetu-info-duration {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #868686;
+      margin-bottom: 24px;
+    }
+
+    .tetu-info-desc {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: #222;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .tetu-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .tetu-info-right span {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tetu-info-right span.grey {
+      color: #868686;
+    }
+
+    /* --- CONTENT SECTIONS --- */
+
+    /* Two-column editorial */
+    .tetu-editorial {
+      max-width: 1384px;
+      margin: 0 auto;
+      padding: 0 64px 80px;
+    }
+
+    .tetu-editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      min-height: 520px;
+    }
+
+    .tetu-editorial-left {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tetu-editorial-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-editorial-right {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tetu-editorial-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right top;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-editorial-left:hover img,
+    .tetu-editorial-right:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Pink magazine mockup section */
+    .tetu-pink-mockup {
+      background: #f0c4c4;
+      padding: 100px 64px;
+      overflow: hidden;
+    }
+
+    .tetu-pink-mockup-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tetu-article-card {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+    }
+
+    .tetu-article-card-header {
+      padding: 40px 40px 0;
+    }
+
+    .tetu-article-card-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: #f0c4c4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      display: inline-block;
+      background: #222;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    .tetu-article-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .tetu-article-card-sub {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: #868686;
+      line-height: 1.5;
+      padding: 0 40px 30px;
+    }
+
+    .tetu-article-card-image {
+      width: 100%;
+      height: 300px;
+      background: url('assets/project-tetu.jpg') center 30% / cover no-repeat;
+      position: relative;
+    }
+
+    .tetu-article-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(240, 196, 196, 0.3));
+    }
+
+    /* Continue reading section */
+    .tetu-reading {
+      background: #fff;
+      padding: 100px 64px;
+    }
+
+    .tetu-reading-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+    }
+
+    .tetu-reading-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .tetu-reading-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .tetu-reading-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fafafa;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .tetu-reading-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    }
+
+    .tetu-reading-card-img {
+      height: 200px;
+      background: url('assets/project-tetu.jpg') center / cover no-repeat;
+      position: relative;
+    }
+
+    .tetu-reading-card:nth-child(2) .tetu-reading-card-img {
+      background-position: left center;
+    }
+
+    .tetu-reading-card:nth-child(3) .tetu-reading-card-img {
+      background-position: right bottom;
+    }
+
+    .tetu-reading-card-body {
+      padding: 24px;
+    }
+
+    .tetu-reading-card-cat {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: #f0c4c4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .tetu-reading-card-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .tetu-reading-card-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #868686;
+    }
+
+    /* Pink banner - PARIS EST TETU */
+    .tetu-paris-banner {
+      background: #f0c4c4;
+      padding: 80px 64px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tetu-paris-banner-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      min-height: 400px;
+    }
+
+    .tetu-paris-text {
+      flex: 1;
+    }
+
+    .tetu-paris-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .tetu-paris-text p {
+      font-size: 16px;
+      color: #222;
+      line-height: 1.6;
+      max-width: 400px;
+      opacity: 0.7;
+    }
+
+    .tetu-paris-collage {
+      flex: 1;
+      position: relative;
+      height: 400px;
+    }
+
+    .tetu-paris-collage-img {
+      position: absolute;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .tetu-paris-collage-img:nth-child(1) {
+      width: 280px;
+      height: 340px;
+      top: 0;
+      left: 0;
+      transform: rotate(-3deg);
+    }
+
+    .tetu-paris-collage-img:nth-child(2) {
+      width: 240px;
+      height: 300px;
+      top: 30px;
+      right: 0;
+      transform: rotate(4deg);
+    }
+
+    .tetu-paris-collage-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* NOS VIES QUEER section */
+    .tetu-queer {
+      background: #f7dede;
+      padding: 120px 64px;
+      overflow: hidden;
+    }
+
+    .tetu-queer-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .tetu-queer-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 32px;
+    }
+
+    .tetu-queer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 700;
+      font-style: italic;
+      color: #222;
+      line-height: 1.1;
+      margin-bottom: 48px;
+    }
+
+    .tetu-queer-quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tetu-queer-quote {
+      text-align: left;
+    }
+
+    .tetu-queer-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: #222;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .tetu-queer-quote-author {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Pricing section */
+    .tetu-pricing {
+      background: #fff;
+      padding: 120px 64px;
+    }
+
+    .tetu-pricing-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+    }
+
+    .tetu-pricing-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .tetu-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .tetu-pricing-card {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 48px 36px;
+      text-align: center;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tetu-pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #f0c4c4;
+      transform: scaleX(0);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-pricing-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .tetu-pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.06);
+      border-color: #f0c4c4;
+    }
+
+    .tetu-pricing-card.featured {
+      border-color: #f0c4c4;
+      background: #fdf5f5;
+    }
+
+    .tetu-pricing-card.featured::before {
+      transform: scaleX(1);
+    }
+
+    .tetu-pricing-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+    }
+
+    .tetu-pricing-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .tetu-pricing-period {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #868686;
+      margin-bottom: 32px;
+    }
+
+    .tetu-pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tetu-pricing-features li {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .tetu-pricing-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 2px solid #222;
+      border-radius: 30px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tetu-pricing-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .tetu-pricing-card.featured .tetu-pricing-btn {
+      background: #222;
+      color: #fff;
+      border-color: #222;
+    }
+
+    .tetu-pricing-card.featured .tetu-pricing-btn:hover {
+      background: #f0c4c4;
+      color: #222;
+      border-color: #f0c4c4;
+    }
+
+    /* --- NEXT PROJECT --- */
+    .tetu-next {
+      padding: 100px 64px;
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid rgba(34, 34, 34, 0.08);
+    }
+
+    .tetu-next-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .tetu-next-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: #222;
+      transition: color 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tetu-next-name:hover {
+      color: #f0c4c4;
+    }
+
+    .tetu-next-star {
+      margin-top: 40px;
+    }
+
+    .tetu-next-star svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* --- TETU PAGE ANIMATIONS --- */
+
+    /* Scroll reveal */
+    .tetu-reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Slide from left */
+    .tetu-slide-left {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Slide from right */
+    .tetu-slide-right {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tetu-slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Stagger children */
+    .tetu-stagger > *:nth-child(1) { transition-delay: 0s; }
+    .tetu-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+    .tetu-stagger > *:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Pricing card stagger */
+    .tetu-pricing-grid .tetu-reveal:nth-child(1) { transition-delay: 0s; }
+    .tetu-pricing-grid .tetu-reveal:nth-child(2) { transition-delay: 0.15s; }
+    .tetu-pricing-grid .tetu-reveal:nth-child(3) { transition-delay: 0.3s; }
+
+    /* Parallax image containers */
+    .tetu-parallax-wrap {
+      overflow: hidden;
+    }
+
+    .tetu-parallax-img {
+      transition: transform 0.1s linear;
+      will-change: transform;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+      .tetu-info {
+        padding: 80px 32px;
+      }
+
+      .tetu-editorial {
+        padding: 0 32px 60px;
+      }
+
+      .tetu-pink-mockup,
+      .tetu-reading,
+      .tetu-paris-banner,
+      .tetu-queer,
+      .tetu-pricing,
+      .tetu-next {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+
+      .tetu-paris-text h2 {
+        font-size: 56px;
+      }
+
+      .tetu-queer-title {
+        font-size: 48px;
+      }
+
+      .tetu-bottom-menu-inner {
+        padding: 15px 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor { display: none; }
+
+      .tetu-hero {
+        min-height: 600px;
+      }
+
+      .tetu-hero-logo {
+        width: 140px;
+      }
+
+      .tetu-info {
+        padding: 60px 20px;
+      }
+
+      .tetu-info-inner {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .tetu-info-right {
+        align-items: flex-start;
+      }
+
+      .tetu-editorial {
+        padding: 0 20px 40px;
+      }
+
+      .tetu-editorial-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .tetu-editorial-left,
+      .tetu-editorial-right {
+        height: 300px;
+      }
+
+      .tetu-pink-mockup,
+      .tetu-reading,
+      .tetu-paris-banner,
+      .tetu-queer,
+      .tetu-pricing,
+      .tetu-next {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .tetu-reading-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tetu-paris-banner-inner {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .tetu-paris-text h2 {
+        font-size: 40px;
+      }
+
+      .tetu-paris-collage {
+        width: 100%;
+        height: 300px;
+      }
+
+      .tetu-queer-title {
+        font-size: 36px;
+      }
+
+      .tetu-queer-quotes {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .tetu-pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .tetu-next-name {
+        font-size: 36px;
+      }
+
+      .tetu-bottom-menu-inner {
+        padding: 15px 20px;
+        justify-content: center;
+      }
+
+      .tetu-menu-left,
+      .tetu-menu-right {
+        display: none;
+      }
+
+      .tetu-menu-center {
+        gap: 16px;
+      }
+
+      .tetu-menu-center a,
+      .tetu-menu-right a {
+        cursor: pointer;
+      }
+
+      .tetu-pricing-btn,
+      .tetu-reading-card,
+      .tetu-pricing-card,
+      .tetu-next-name {
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tetu-info-title {
+        font-size: 32px;
+      }
+
+      .tetu-article-card-title {
+        font-size: 24px;
+      }
+
+      .tetu-article-card-header {
+        padding: 24px 24px 0;
+      }
+
+      .tetu-article-card-sub {
+        padding: 0 24px 24px;
+      }
+
+      .tetu-paris-text h2 {
+        font-size: 32px;
+      }
+
+      .tetu-queer-title {
+        font-size: 28px;
+      }
+
+      .tetu-pricing-price {
+        font-size: 36px;
+      }
+
+      .tetu-next-name {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    <span class="cursor-text">VIEW</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header" style="mix-blend-mode: difference;">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left" style="cursor: pointer;">
+        <span>Open for any</span>
+        <span>collaborations and offers</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="tetu-hero" id="hero">
+    <div class="tetu-hero-image-wrapper">
+      <div class="tetu-hero-image"></div>
+    </div>
+    <div class="tetu-hero-overlay"></div>
+    <img src="assets/tetu-logo.svg" alt="TETU" class="tetu-hero-logo" width="200" height="70">
+  </section>
+
+  <!-- BOTTOM MENU -->
+  <nav class="tetu-bottom-menu" id="tetuMenu">
+    <div class="tetu-bottom-menu-inner">
+      <div class="tetu-menu-left">
+        <span>TETU</span>
+        <span>PROJECT : [07]</span>
+      </div>
+      <div class="tetu-menu-center">
+        <a href="index.html">ABOUT</a>
+        <a href="work.html" class="active">WORK</a>
+        <a href="playground.html">PLAYGROUND</a>
+        <a href="contact.html">CONTACT</a>
+      </div>
+      <div class="tetu-menu-right">
+        <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener">FOLLOW ME &#x2197;</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROJECT INFO -->
+  <section class="tetu-info tetu-reveal">
+    <div class="tetu-info-inner">
+      <div class="tetu-info-left">
+        <p class="tetu-info-type">INTERNSHIP</p>
+        <h1 class="tetu-info-title">Tetu</h1>
+        <p class="tetu-info-duration">3 mois / 2021</p>
+        <p class="tetu-info-desc">Ze project is to make new pages from new articles.</p>
+      </div>
+      <div class="tetu-info-right">
+        <span>PARIS</span>
+        <span>INTERNSHIP</span>
+        <span class="grey">01/06/2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL TWO-COLUMN -->
+  <section class="tetu-editorial tetu-reveal">
+    <div class="tetu-editorial-grid">
+      <div class="tetu-editorial-left tetu-parallax-wrap tetu-slide-left">
+        <img src="assets/project-tetu.jpg" alt="TETU editorial" class="tetu-parallax-img" loading="lazy" width="680" height="520" style="object-position: 20% center;">
+      </div>
+      <div class="tetu-editorial-right tetu-parallax-wrap tetu-slide-right">
+        <img src="assets/project-tetu.jpg" alt="TETU article screenshots" class="tetu-parallax-img" loading="lazy" width="680" height="520" style="object-position: 80% 20%;">
+      </div>
+    </div>
+  </section>
+
+  <!-- PINK MOCKUP SECTION -->
+  <section class="tetu-pink-mockup tetu-slide-left">
+    <div class="tetu-pink-mockup-inner">
+      <div class="tetu-article-card tetu-reveal">
+        <div class="tetu-article-card-header">
+          <span class="tetu-article-card-tag">CULTURE</span>
+          <h2 class="tetu-article-card-title">MASQUE: On ne peut nier le sex-appeal d'un masque</h2>
+        </div>
+        <p class="tetu-article-card-sub">Depuis le debut de la pandemie, le masque est devenu un accessoire de mode a part entiere. Entre protection et seduction, retour sur un objet devenu iconique.</p>
+        <div class="tetu-article-card-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTINUE READING -->
+  <section class="tetu-reading tetu-reveal">
+    <div class="tetu-reading-inner">
+      <h3 class="tetu-reading-title">CONTINUEZ LA LECTURE</h3>
+      <div class="tetu-reading-grid tetu-stagger">
+        <div class="tetu-reading-card tetu-reveal">
+          <div class="tetu-reading-card-img"></div>
+          <div class="tetu-reading-card-body">
+            <p class="tetu-reading-card-cat">SOCIETE</p>
+            <h4 class="tetu-reading-card-heading">La nouvelle generation queer revendique sa visibilite</h4>
+            <span class="tetu-reading-card-date">12 JUIN 2021</span>
+          </div>
+        </div>
+        <div class="tetu-reading-card tetu-reveal">
+          <div class="tetu-reading-card-img"></div>
+          <div class="tetu-reading-card-body">
+            <p class="tetu-reading-card-cat">CULTURE</p>
+            <h4 class="tetu-reading-card-heading">Mode et identite : le vetement comme manifeste</h4>
+            <span class="tetu-reading-card-date">28 MAI 2021</span>
+          </div>
+        </div>
+        <div class="tetu-reading-card tetu-reveal">
+          <div class="tetu-reading-card-img"></div>
+          <div class="tetu-reading-card-body">
+            <p class="tetu-reading-card-cat">PORTRAIT</p>
+            <h4 class="tetu-reading-card-heading">Rencontre avec les artistes qui bousculent les codes</h4>
+            <span class="tetu-reading-card-date">15 MAI 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARIS EST TETU BANNER -->
+  <section class="tetu-paris-banner tetu-slide-right">
+    <div class="tetu-paris-banner-inner">
+      <div class="tetu-paris-text tetu-slide-left">
+        <h2>PARIS<br>EST TETU</h2>
+        <p>Un regard libre et affirme sur la culture, la mode et la societe. TETU, c'est la voix d'une communaute qui refuse les compromis.</p>
+      </div>
+      <div class="tetu-paris-collage">
+        <div class="tetu-paris-collage-img tetu-parallax-wrap">
+          <img src="assets/project-tetu.jpg" alt="TETU collage 1" class="tetu-parallax-img" loading="lazy" width="280" height="340" style="object-position: 30% center;">
+        </div>
+        <div class="tetu-paris-collage-img tetu-parallax-wrap">
+          <img src="assets/project-tetu.jpg" alt="TETU collage 2" class="tetu-parallax-img" loading="lazy" width="240" height="300" style="object-position: 70% 40%;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOS VIES QUEER -->
+  <section class="tetu-queer tetu-reveal">
+    <div class="tetu-queer-inner">
+      <p class="tetu-queer-label">TEMOIGNAGES</p>
+      <h2 class="tetu-queer-title">NOS VIES QUEER</h2>
+      <div class="tetu-queer-quotes tetu-stagger">
+        <div class="tetu-queer-quote tetu-reveal">
+          <p class="tetu-queer-quote-text">"Etre soi, c'est le plus beau des combats."</p>
+          <span class="tetu-queer-quote-author">-- MARIE L., PARIS</span>
+        </div>
+        <div class="tetu-queer-quote tetu-reveal">
+          <p class="tetu-queer-quote-text">"La liberte, ca se prend. Ca ne se demande pas."</p>
+          <span class="tetu-queer-quote-author">-- JULIEN D., LYON</span>
+        </div>
+        <div class="tetu-queer-quote tetu-reveal">
+          <p class="tetu-queer-quote-text">"On ne choisit pas qui on aime, on choisit de l'assumer."</p>
+          <span class="tetu-queer-quote-author">-- ALEX R., MARSEILLE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="tetu-pricing tetu-reveal">
+    <div class="tetu-pricing-inner">
+      <p class="tetu-pricing-label">ABONNEZ-VOUS</p>
+      <div class="tetu-pricing-grid">
+        <div class="tetu-pricing-card tetu-reveal">
+          <p class="tetu-pricing-name">ABONNEMENT 6 MOIS</p>
+          <p class="tetu-pricing-price">30&euro;</p>
+          <p class="tetu-pricing-period">soit 5&euro; / mois</p>
+          <ul class="tetu-pricing-features">
+            <li>Acces illimite aux articles</li>
+            <li>Newsletter exclusive</li>
+            <li>Edition numerique</li>
+          </ul>
+          <a href="#" class="tetu-pricing-btn">S'ABONNER</a>
+        </div>
+        <div class="tetu-pricing-card featured tetu-reveal">
+          <p class="tetu-pricing-name">OFFRE 1 LIBRE</p>
+          <p class="tetu-pricing-price">5,90&euro;</p>
+          <p class="tetu-pricing-period">par mois, sans engagement</p>
+          <ul class="tetu-pricing-features">
+            <li>Acces illimite aux articles</li>
+            <li>Newsletter exclusive</li>
+            <li>Edition numerique + papier</li>
+          </ul>
+          <a href="#" class="tetu-pricing-btn">CHOISIR</a>
+        </div>
+        <div class="tetu-pricing-card tetu-reveal">
+          <p class="tetu-pricing-name">ABONNEMENT 12 MOIS</p>
+          <p class="tetu-pricing-price">59&euro;</p>
+          <p class="tetu-pricing-period">soit 4,92&euro; / mois</p>
+          <ul class="tetu-pricing-features">
+            <li>Acces illimite aux articles</li>
+            <li>Newsletter exclusive</li>
+            <li>Edition numerique + papier</li>
+            <li>Evenements prives</li>
+          </ul>
+          <a href="#" class="tetu-pricing-btn">S'ABONNER</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <section class="tetu-next tetu-reveal">
+    <p class="tetu-next-label">NEXT PROJECT</p>
+    <a href="work-norphe.html" class="tetu-next-name">Norphe</a>
+    <div class="tetu-next-star">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="#222222"/>
+      </svg>
+    </div>
+  </section>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    /* ====== TETU PAGE SCRIPTS ====== */
+
+    // --- Custom Cursor ---
+    const cursor = document.getElementById('cursor');
+    let cursorX = 0, cursorY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+    });
+
+    function animateCursor() {
+      const ease = 0.15;
+      currentX += (cursorX - currentX) * ease;
+      currentY += (cursorY - currentY) * ease;
+      cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor hover on interactive elements
+    const hoverTargets = document.querySelectorAll('a, .tetu-reading-card, .tetu-pricing-card');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // --- Bottom Menu Visibility ---
+    const tetuMenu = document.getElementById('tetuMenu');
+    const hero = document.getElementById('hero');
+
+    function checkMenuVisibility() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        tetuMenu.classList.add('visible');
+      } else {
+        tetuMenu.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', checkMenuVisibility, { passive: true });
+    checkMenuVisibility();
+
+    // --- Header scroll state ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // --- Scroll Reveal ---
+    const revealElements = document.querySelectorAll('.tetu-reveal, .tetu-slide-left, .tetu-slide-right');
+
+    function checkReveal() {
+      const windowHeight = window.innerHeight;
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const triggerPoint = windowHeight * 0.88;
+        if (rect.top < triggerPoint) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkReveal, { passive: true });
+    window.addEventListener('load', checkReveal);
+    checkReveal();
+
+    // --- Parallax ---
+    const parallaxImages = document.querySelectorAll('.tetu-parallax-img');
+
+    function updateParallax() {
+      parallaxImages.forEach(img => {
+        const wrap = img.closest('.tetu-parallax-wrap');
+        if (!wrap) return;
+        const rect = wrap.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > windowHeight) return;
+        const progress = (rect.top + rect.height / 2) / windowHeight;
+        const offset = (progress - 0.5) * 40;
+        img.style.transform = `translateY(${offset}px) scale(1.05)`;
+      });
+    }
+
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  </script>
+</body>
+</html>

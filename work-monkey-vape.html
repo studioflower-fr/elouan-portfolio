@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONKEY VAPE / MV KA — Elouan BEGUE</title>
+  <meta name="description" content="Monkey Vape MV KA brand case study. Branding, web design and visual identity by Elouan BEGUE.">
+  <meta property="og:title" content="MONKEY VAPE / MV KA — Elouan BEGUE">
+  <meta property="og:description" content="Monkey Vape MV KA brand case study. Branding, web design and visual identity by Elouan BEGUE.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/work-monkey-vape.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/mv-hero.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/work-monkey-vape.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Monkey Vape / MV KA",
+  "description": "Monkey Vape MV KA brand case study. Branding, web design and visual identity.",
+  "creator": {
+    "@type": "Person",
+    "name": "Elouan BEGUE"
+  },
+  "url": "https://elouanbegue.com/work-monkey-vape.html"
+}
+</script>
+  <style>
+    /* === MONKEY VAPE CASE STUDY — Figma rebuild === */
+
+    body {
+      background: #161616;
+      color: #f1f1f1;
+    }
+
+    /* --- HEADER override --- */
+    .header {
+      background: transparent;
+      mix-blend-mode: difference;
+    }
+    .header.scrolled {
+      background-color: rgba(22, 22, 22, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* --- HERO --- */
+    .mv-hero {
+      position: relative;
+      width: 100%;
+      height: 899px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mv-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/mv-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      animation: mvHeroZoom 1.6s ease-out forwards;
+      will-change: transform;
+    }
+
+    @keyframes mvHeroZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.0); }
+    }
+
+    .mv-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .mv-hero-logo {
+      position: relative;
+      z-index: 2;
+      width: 200px;
+      height: auto;
+      opacity: 0;
+      animation: mvLogoIn 1s ease-out 0.4s forwards;
+    }
+
+    @keyframes mvLogoIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Hero bottom bar */
+    .mv-hero-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      padding: 20px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(241, 241, 241, 0.15);
+    }
+
+    .mv-hero-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mv-hero-bar-label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .mv-hero-bar-value {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #f1f1f1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* --- MAIN CONTENT WRAPPER --- */
+    .mv-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      padding-top: 60px;
+    }
+
+    /* --- TITLE + INFO SECTION --- */
+    .mv-info {
+      width: 1152px;
+      max-width: calc(100% - 128px);
+      display: flex;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .mv-info-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .mv-info-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 43px;
+      font-weight: 300;
+      color: #f1f1f1;
+      line-height: 1.15;
+    }
+
+    .mv-info-credits {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .mv-info-credits:hover {
+      color: #f1f1f1;
+    }
+
+    .mv-info-desc {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .mv-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      padding-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .mv-info-meta {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: right;
+    }
+
+    .mv-info-meta strong {
+      color: #f1f1f1;
+      font-weight: 500;
+    }
+
+    /* --- GALLERY --- */
+    .mv-gallery {
+      width: 1384px;
+      max-width: calc(100% - 128px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Row 1: Text + Image side by side */
+    .mv-row-mission {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .mv-mission-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px 40px;
+      background: #1c1c1c;
+      border-radius: 5px;
+    }
+
+    .mv-mission-label {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .mv-mission-desc {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
+      max-width: 455px;
+    }
+
+    .mv-mission-img {
+      height: 535px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-mission-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-mission-img:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Row 2: Two images side by side */
+    .mv-row-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .mv-row-two-img {
+      height: 465px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-row-two-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-row-two-img:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Row 3: Full width image */
+    .mv-row-full {
+      width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-row-full img {
+      width: 100%;
+      height: 739px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-row-full:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Row 4: Image with logo overlay + text block */
+    .mv-row-logo-text {
+      display: grid;
+      grid-template-columns: 919fr 455fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .mv-logo-overlay {
+      position: relative;
+      height: 465px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-logo-overlay img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-logo-overlay:hover img {
+      transform: scale(1.02);
+    }
+
+    .mv-logo-overlay-svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .mv-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px 40px;
+      background: #1c1c1c;
+      border-radius: 5px;
+    }
+
+    .mv-text-block-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 29px;
+      font-weight: 400;
+      color: #f1f1f1;
+      line-height: 1.3;
+    }
+
+    .mv-text-block-desc {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
+    }
+
+    /* Row 5: Centered box/packaging */
+    .mv-row-box {
+      width: 100%;
+      height: 660px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1c1c1c;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-row-box img {
+      width: 608px;
+      height: 382px;
+      object-fit: contain;
+    }
+
+    /* Row 6: Full stationery image */
+    .mv-row-stationery {
+      width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-row-stationery img {
+      width: 100%;
+      height: 1649px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* --- NEXT PROJECT --- */
+    .mv-next {
+      width: 100%;
+      height: 479px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 60px;
+      cursor: pointer;
+    }
+
+    .mv-next-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-next:hover .mv-next-bg {
+      transform: scale(1.03);
+    }
+
+    .mv-next-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      pointer-events: none;
+    }
+
+    .mv-next-label {
+      position: relative;
+      z-index: 2;
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .mv-next-logo {
+      position: relative;
+      z-index: 2;
+      width: 120px;
+      height: auto;
+    }
+
+    .mv-next-name {
+      position: relative;
+      z-index: 2;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 43px;
+      font-weight: 400;
+      color: #f1f1f1;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
+    }
+
+    .mv-next:hover .mv-next-name {
+      opacity: 0.7;
+    }
+
+    /* --- BOTTOM MENU --- */
+    .mv-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: #363636;
+      isolation: isolate;
+      padding: 15px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .mv-bottom-bar.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mv-bar-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mv-bar-left span {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .mv-bar-left span:last-child {
+      color: #868686;
+    }
+
+    .mv-bar-center {
+      display: flex;
+      gap: 40px;
+    }
+
+    .mv-bar-center a {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .mv-bar-center a.active {
+      color: #fff;
+    }
+
+    .mv-bar-center a:hover {
+      color: #fff;
+    }
+
+    .mv-bar-right a {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .mv-bar-right a:hover {
+      opacity: 0.7;
+    }
+
+    /* --- REVEAL ANIMATIONS --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1200px) {
+      .mv-gallery {
+        max-width: calc(100% - 80px);
+      }
+      .mv-info {
+        max-width: calc(100% - 80px);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .mv-hero { height: 700px; }
+      .mv-hero-bar { padding: 16px 40px; }
+      .mv-info { flex-direction: column; gap: 30px; }
+      .mv-info-right { align-items: flex-start; flex-direction: row; gap: 24px; flex-wrap: wrap; }
+      .mv-info-title { font-size: 36px; }
+      .mv-mission-img { height: 400px; }
+      .mv-row-two-img { height: 360px; }
+      .mv-row-full img { height: 500px; }
+      .mv-logo-overlay { height: 360px; }
+      .mv-row-box { height: 480px; }
+      .mv-row-box img { width: 400px; height: auto; }
+      .mv-row-stationery img { height: auto; }
+      .mv-next { height: 380px; }
+    }
+
+    @media (max-width: 768px) {
+      .mv-hero { height: 550px; }
+      .mv-hero-logo { width: 140px; }
+      .mv-hero-bar { padding: 12px 24px; flex-wrap: wrap; gap: 8px; }
+      .mv-hero-bar-item { gap: 6px; }
+      .mv-hero-bar-label { font-size: 10px; }
+      .mv-hero-bar-value { font-size: 12px; }
+
+      .mv-gallery { max-width: calc(100% - 48px); }
+      .mv-info { max-width: calc(100% - 48px); }
+
+      .mv-row-mission { grid-template-columns: 1fr; }
+      .mv-mission-img { height: 300px; }
+      .mv-mission-text { padding: 30px 24px; }
+
+      .mv-row-two { grid-template-columns: 1fr; }
+      .mv-row-two-img { height: 280px; }
+
+      .mv-row-full img { height: 350px; }
+
+      .mv-row-logo-text { grid-template-columns: 1fr; }
+      .mv-logo-overlay { height: 280px; }
+      .mv-text-block { padding: 30px 24px; }
+
+      .mv-row-box { height: 340px; }
+      .mv-row-box img { width: 300px; height: auto; }
+
+      .mv-row-stationery img { height: auto; }
+
+      .mv-next { height: 300px; margin-top: 40px; }
+      .mv-next-name { font-size: 32px; }
+
+      .mv-bar-left { display: none; }
+      .mv-bar-right { display: none; }
+      .mv-bottom-bar { justify-content: center; padding: 15px 24px; }
+      .mv-bar-center { gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .mv-hero { height: 450px; }
+      .mv-hero-logo { width: 110px; }
+      .mv-hero-bar { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 16px; }
+      .mv-content { gap: 40px; padding-top: 40px; }
+      .mv-info-title { font-size: 26px; }
+      .mv-info-desc { font-size: 13px; }
+      .mv-mission-desc { font-size: 13px; }
+      .mv-gallery { max-width: calc(100% - 32px); }
+      .mv-info { max-width: calc(100% - 32px); }
+      .mv-mission-img { height: 220px; }
+      .mv-row-two-img { height: 220px; }
+      .mv-row-full img { height: 250px; }
+      .mv-logo-overlay { height: 220px; }
+      .mv-row-box { height: 280px; }
+      .mv-row-box img { width: 240px; }
+      .mv-next { height: 240px; }
+      .mv-next-name { font-size: 26px; }
+      .mv-next-logo { width: 80px; }
+      .mv-bar-center { gap: 12px; }
+      .mv-bottom-bar { padding: 15px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    <span class="cursor-text">VIEW</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left">
+        <span>Open for any</span>
+        <span>collaborations and offers</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="mv-hero">
+    <div class="mv-hero-bg"></div>
+    <div class="mv-hero-overlay"></div>
+    <img class="mv-hero-logo" src="assets/mv-logo-white.svg" alt="MVKA Logo">
+
+    <!-- Hero bottom bar -->
+    <div class="mv-hero-bar">
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">TYPE</span>
+        <span class="mv-hero-bar-value">Freelance</span>
+      </div>
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">EXPERTISE</span>
+        <span class="mv-hero-bar-value">Branding, Web Design</span>
+      </div>
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">DATE</span>
+        <span class="mv-hero-bar-value">01.21 - 02.21</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="mv-content">
+
+    <!-- TITLE + INFO -->
+    <section class="mv-info reveal">
+      <div class="mv-info-left">
+        <h1 class="mv-info-title">Monkey Vape</h1>
+        <span class="mv-info-credits">/ VIEW CREDITS</span>
+        <p class="mv-info-desc">
+          Monkey Vape is a specialist e-cigarette store that wants to modernize its brand image and offer a site to sell its products in France.
+        </p>
+      </div>
+      <div class="mv-info-right">
+        <span class="mv-info-meta">/ TAG: <strong>New Atmosph&egrave;re</strong></span>
+        <span class="mv-info-meta">/ CLIENT: <strong>Sandwich Design</strong></span>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <div class="mv-gallery">
+
+      <!-- Row 1: Mission text + image -->
+      <div class="mv-row-mission reveal">
+        <div class="mv-mission-text">
+          <span class="mv-mission-label">/ MISSION</span>
+          <p class="mv-mission-desc">
+            Monkey Vape wanted to assert a modern, innovative brand image by drawing inspiration from current trends, focusing is image on a new product and transform is ageing appearance.
+          </p>
+        </div>
+        <div class="mv-mission-img">
+          <img src="assets/mv-gallery1.jpg" alt="Monkey Vape brand imagery" loading="lazy" width="692" height="535">
+        </div>
+      </div>
+
+      <!-- Row 2: Two images -->
+      <div class="mv-row-two reveal">
+        <div class="mv-row-two-img">
+          <img src="assets/mv-gallery2.jpg" alt="Monkey Vape product shot" loading="lazy" width="687" height="465">
+        </div>
+        <div class="mv-row-two-img">
+          <img src="assets/mv-gallery3.jpg" alt="Monkey Vape branding detail" loading="lazy" width="687" height="465">
+        </div>
+      </div>
+
+      <!-- Row 3: Full width image -->
+      <div class="mv-row-full reveal">
+        <img src="assets/mv-gallery4.jpg" alt="Monkey Vape full brand spread" loading="lazy" width="1384" height="739">
+      </div>
+
+      <!-- Row 4: Image with logo overlay + text -->
+      <div class="mv-row-logo-text reveal">
+        <div class="mv-logo-overlay">
+          <img src="assets/mv-gallery5.jpg" alt="Monkey Vape brand application" loading="lazy" width="919" height="465">
+          <img class="mv-logo-overlay-svg" src="assets/mv-logo-small.svg" alt="MVKA logo" loading="lazy">
+        </div>
+        <div class="mv-text-block">
+          <p class="mv-text-block-desc">
+            The design af the scenography is sober, departing from conventional web design, we embraced a minimalist and premium aesthetic, mirroring the sophistication of the vape shop. This approach ensures a seamless and visually engaging experience for visitors, reflecting the commitment to simplicity. Every aspect, from layout to color palette, is meticulously curated to convey the vape shop's unique narrative.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 5: Centered 3D box/packaging -->
+      <div class="mv-row-box reveal">
+        <img src="assets/mv-box.png" alt="Monkey Vape packaging box mockup" loading="lazy" width="608" height="382">
+      </div>
+
+      <!-- Row 6: Full stationery/collateral image -->
+      <div class="mv-row-stationery reveal">
+        <img src="assets/mv-stationery.jpg" alt="Monkey Vape brand stationery and collateral" loading="lazy" width="1384" height="1649">
+      </div>
+
+    </div>
+
+    <!-- NEXT PROJECT -->
+    <a href="work-dina-summer.html" class="mv-next reveal" style="text-decoration:none;">
+      <div class="mv-next-bg" style="background-image: url('assets/mv-next-bg.jpg');"></div>
+      <div class="mv-next-overlay"></div>
+      <span class="mv-next-label">Next project</span>
+      <img class="mv-next-logo" src="assets/mv-next-logo.svg" alt="Dina Summer logo" loading="lazy">
+      <span class="mv-next-name">Dina Summer</span>
+    </a>
+
+  </div>
+
+  <!-- BOTTOM MENU -->
+  <nav class="mv-bottom-bar" id="bottomBar">
+    <div class="mv-bar-left">
+      <span>MONKEY VAPE</span>
+      <span>PROJECT : [08]</span>
+    </div>
+    <div class="mv-bar-center">
+      <a href="index.html">ABOUT</a>
+      <a href="work.html" class="active">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="mv-bar-right">
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener">FOLLOW ME &#x2197;</a>
+    </div>
+  </nav>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    /* === MONKEY VAPE PAGE SCRIPTS === */
+
+    // --- Header scroll ---
+    const header = document.getElementById('header');
+    let lastScrollY = 0;
+
+    function handleHeaderScroll() {
+      const sy = window.scrollY;
+      if (sy > 80) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      lastScrollY = sy;
+    }
+
+    // --- Bottom bar visibility ---
+    const bottomBar = document.getElementById('bottomBar');
+
+    function handleBottomBar() {
+      if (window.scrollY > 400) {
+        bottomBar.classList.add('visible');
+      } else {
+        bottomBar.classList.remove('visible');
+      }
+    }
+
+    // --- Scroll reveal (IntersectionObserver) ---
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // --- Unified scroll handler ---
+    function onScroll() {
+      handleHeaderScroll();
+      handleBottomBar();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- Header fade-in ---
+    header.style.opacity = '0';
+    header.style.animation = 'fadeIn 0.8s ease 0.3s forwards';
+  </script>
+
+</body>
+</html>

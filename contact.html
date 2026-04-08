@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elouan BEGUE — Contact</title>
+  <meta name="description" content="Get in touch with Elouan BEGUE, Creative Director based in Paris.">
+  <meta property="og:title" content="Elouan BEGUE — Contact">
+  <meta property="og:description" content="Get in touch with Elouan BEGUE, Creative Director based in Paris.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/contact.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/hero.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/contact.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* === CONTACT PAGE OVERRIDES === */
+    body.contact-page {
+      background: #f1f1f1;
+      color: #222;
+      height: 100vh;
+      position: relative;
+      cursor: none;
+      overflow: hidden;
+    }
+
+    .contact-page .header {
+      position: fixed;
+      opacity: 1;
+      animation: none;
+      background: transparent;
+    }
+
+    .contact-page .header-left span,
+    .contact-page .header-right span {
+      color: #222;
+    }
+
+    .contact-page .header-center .logo path {
+      fill: #222;
+    }
+
+    .contact-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+
+    .contact-headline {
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #222;
+      letter-spacing: -0.16px;
+    }
+
+    .contact-headline em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .contact-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    .contact-word.visible {
+      animation: wordReveal 0.5s ease forwards;
+    }
+
+    @keyframes wordReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-footer-left {
+      position: absolute;
+      bottom: 110px;
+      left: 65px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: contactFadeIn 0.6s ease 0.8s forwards;
+    }
+
+    .contact-footer-left .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-footer-left .footer-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .contact-footer-left .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #222;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-footer-left .footer-link:hover::after {
+      width: 100%;
+    }
+
+    .contact-footer-left .footer-location span,
+    .contact-footer-left .footer-credits span {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--grey);
+      display: block;
+      line-height: 1.6;
+    }
+
+    .contact-footer-left .footer-location span span {
+      display: inline;
+    }
+
+    .contact-footer-right {
+      position: absolute;
+      bottom: 110px;
+      right: 65px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: contactFadeIn 0.6s ease 1s forwards;
+    }
+
+    .contact-footer-right .footer-social-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .contact-footer-right .footer-social-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #222;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-footer-right .footer-social-link:hover::after {
+      width: 100%;
+    }
+
+    .contact-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: #363636;
+      transform: translateY(100%);
+      animation: contactSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .contact-menu-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 15px var(--side-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-menu-left {
+      display: flex;
+      gap: 24px;
+    }
+
+    .contact-menu-label {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-menu-label span {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .contact-menu-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .contact-menu-link {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .contact-menu-link.active {
+      color: #fff;
+    }
+
+    .contact-menu-link:hover {
+      color: #fff;
+    }
+
+    .contact-menu-follow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+    }
+
+    .contact-menu-follow:hover {
+      opacity: 0.7;
+    }
+
+    @keyframes contactFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes contactSlideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      body.contact-page { cursor: auto; }
+      .contact-headline { font-size: 26px; }
+      .contact-center { width: 90%; }
+      .contact-footer-left {
+        left: var(--side-padding);
+        bottom: 80px;
+      }
+      .contact-footer-right {
+        right: var(--side-padding);
+        bottom: 80px;
+      }
+      .contact-menu-left { display: none; }
+      .contact-menu-follow { display: none; }
+      .contact-menu-inner { justify-content: center; }
+      .contact-menu-links { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      body.contact-page {
+        overflow: auto;
+        height: auto;
+        min-height: 100vh;
+      }
+      .contact-headline { font-size: 22px; }
+      .contact-center {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        padding: 120px 20px 40px;
+      }
+      .contact-footer-left {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        padding: 0 20px 30px;
+      }
+      .contact-footer-right {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        align-items: flex-start;
+        padding: 0 20px 100px;
+      }
+      .contact-menu-links { gap: 12px; }
+    }
+  </style>
+</head>
+<body class="contact-page">
+
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Contact — Elouan BEGUE</h1>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left">
+        <span>Open for any</span>
+        <span>collaborations and offers</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="#222222"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CENTER TEXT -->
+  <div class="contact-center">
+    <p class="contact-headline" id="contactHeadline">
+      <em>Let's</em> collaborate<br>
+      and make good <em>sh*t</em> together
+    </p>
+  </div>
+
+  <!-- FOOTER LEFT -->
+  <div class="contact-footer-left">
+    <div class="footer-contact">
+      <a href="mailto:elouanbeguepro@gmail.com" class="footer-link">ELOUANBEGUEPRO@GMAIL.COM</a>
+      <a href="tel:+33628738998" class="footer-link">+ 33 6 28 73 89 98</a>
+    </div>
+    <div class="footer-location">
+      <span style="white-space: nowrap;">PARIS (<span id="parisTime">19:00</span>) FRANCE</span>
+    </div>
+    <div class="footer-credits">
+      <span>ALL RIGHT RESERVED</span>
+      <span>DEVELOPPEMENT : IT CAN BE YOU</span>
+    </div>
+  </div>
+
+  <!-- FOOTER RIGHT -->
+  <div class="contact-footer-right">
+    <a href="https://instagram.com/elone_design" target="_blank" rel="noopener" class="footer-social-link">INSTAGRAM</a>
+    <a href="https://behance.net/elouanbegue" target="_blank" rel="noopener" class="footer-social-link">BEHANCE</a>
+    <a href="https://linkedin.com/in/elouanbegue" target="_blank" rel="noopener" class="footer-social-link">LINKEDIN</a>
+    <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener" class="footer-social-link">LINKTREE</a>
+  </div>
+
+  <!-- BOTTOM MENU -->
+  <nav class="contact-menu">
+    <div class="contact-menu-inner">
+      <div class="contact-menu-left">
+        <span class="contact-menu-label">CONTACT</span>
+        <span class="contact-menu-label">SEE YOU SOON : <span>[BYE]</span></span>
+      </div>
+      <div class="contact-menu-links">
+        <a href="index.html" class="contact-menu-link">ABOUT</a>
+        <a href="work.html" class="contact-menu-link">WORK</a>
+        <a href="playground.html" class="contact-menu-link">PLAYGROUND</a>
+        <a href="contact.html" class="contact-menu-link active">CONTACT</a>
+      </div>
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener" class="contact-menu-follow">FOLLOW ME &#x2197;</a>
+    </div>
+  </nav>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    (function () {
+      'use strict';
+
+      // --- WORD-BY-WORD FADE IN ---
+      var headline = document.getElementById('contactHeadline');
+      if (headline) {
+        var fragment = document.createDocumentFragment();
+        var childNodes = Array.from(headline.childNodes);
+
+        childNodes.forEach(function(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            var text = node.textContent;
+            var parts = text.split(/(\s+)/);
+            parts.forEach(function(part) {
+              if (/^\s+$/.test(part)) {
+                fragment.appendChild(document.createTextNode(part));
+              } else if (part.length > 0) {
+                var span = document.createElement('span');
+                span.className = 'contact-word';
+                span.textContent = part;
+                fragment.appendChild(span);
+              }
+            });
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.tagName === 'BR') {
+              fragment.appendChild(node.cloneNode());
+            } else {
+              var wrapper = document.createElement('span');
+              wrapper.className = 'contact-word';
+              var clone = node.cloneNode(true);
+              wrapper.appendChild(clone);
+              fragment.appendChild(wrapper);
+            }
+          }
+        });
+
+        // Clear using safe DOM methods
+        while (headline.firstChild) {
+          headline.removeChild(headline.firstChild);
+        }
+        headline.appendChild(fragment);
+
+        // Stagger animation
+        var words = headline.querySelectorAll('.contact-word');
+        words.forEach(function(word, i) {
+          word.style.animationDelay = (0.3 + i * 0.08) + 's';
+          word.classList.add('visible');
+        });
+      }
+
+      // --- PARIS TIME ---
+      function updateParisTime() {
+        var timeEl = document.getElementById('parisTime');
+        if (!timeEl) return;
+        var now = new Date();
+        var parisTime = new Intl.DateTimeFormat('en-GB', {
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: 'Europe/Paris',
+          hour12: false,
+        }).format(now);
+        timeEl.textContent = parisTime;
+      }
+      updateParisTime();
+      setInterval(updateParisTime, 60000);
+
+      // --- CUSTOM CURSOR ---
+      var cursor = document.createElement('div');
+      cursor.className = 'cursor';
+      cursor.id = 'cursor';
+      var dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      var circle = document.createElement('div');
+      circle.className = 'cursor-circle';
+      cursor.appendChild(dot);
+      cursor.appendChild(circle);
+      document.body.appendChild(cursor);
+
+      var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isTouchDevice) {
+        var mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+        function animateCursor() {
+          cursorX += (mouseX - cursorX) * 0.15;
+          cursorY += (mouseY - cursorY) * 0.15;
+          cursor.style.transform = 'translate3d(' + cursorX + 'px, ' + cursorY + 'px, 0)';
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Link hover effect
+        var links = document.querySelectorAll('a, .footer-link, .footer-social-link');
+        links.forEach(function(el) {
+          el.addEventListener('mouseenter', function() {
+            circle.style.transform = 'scale(1.3)';
+            dot.style.transform = 'scale(0.5)';
+          });
+          el.addEventListener('mouseleave', function() {
+            circle.style.transform = 'scale(1)';
+            dot.style.transform = 'scale(1)';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

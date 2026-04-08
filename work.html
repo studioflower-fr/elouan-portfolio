@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elouan BEGUE — Work</title>
+  <meta name="description" content="Selected projects by Elouan BEGUE, Creative Director based in Paris.">
+  <meta property="og:title" content="Elouan BEGUE — Work">
+  <meta property="og:description" content="Selected projects by Elouan BEGUE, Creative Director based in Paris.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/work.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/hero.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/work.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* === WORK PAGE OVERRIDES === */
+    body.work-page {
+      background: var(--black);
+      color: #fff;
+      height: 100vh;
+      min-height: 945px;
+      cursor: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-page .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 1;
+      animation: none;
+      background: transparent;
+      z-index: 10;
+    }
+
+    /* === FILTER SECTION === */
+    .work-filter-section {
+      width: 1352px;
+      margin: 0 auto;
+      padding-top: 125px;
+    }
+
+    .filter-label {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .filter-separator {
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      margin-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-pill {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 40px;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .filter-pill:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .filter-pill.active {
+      background: #fff;
+      color: var(--black);
+    }
+
+    .filter-pill:active {
+      transform: scale(0.93);
+    }
+
+    /* === PROJECT TABLE === */
+    .project-table {
+      width: 1352px;
+      margin: 0 auto;
+      padding-top: 30px;
+      flex: 1;
+    }
+
+    .project-row-item {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity 0.3s ease, background 0.3s ease, transform 0.5s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .project-row-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-row-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .row-number {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13.333px;
+      font-weight: 400;
+      width: 120px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .row-company {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13.333px;
+      font-weight: 400;
+      width: 300px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .row-type {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13.333px;
+      font-weight: 400;
+      width: 300px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .row-city {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13.333px;
+      font-weight: 400;
+      width: 300px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .row-date {
+      font-family: 'Input Mono', 'JetBrains Mono', monospace;
+      font-size: 13.333px;
+      font-weight: 400;
+      width: 120px;
+      flex-shrink: 0;
+      text-align: right;
+      text-transform: uppercase;
+      color: #fff;
+      margin-left: auto;
+    }
+
+    /* === BOTTOM MENU BAR === */
+    .work-menu {
+      width: 100%;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .work-menu-inner {
+      width: 1384px;
+      margin: 0 auto;
+      padding: 15px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .work-menu-label {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    .work-menu-label .bracket {
+      color: var(--grey);
+    }
+
+    .work-menu-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .work-menu-link {
+      font-family: 'Neue Montreal', 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey);
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .work-menu-link.active {
+      color: var(--black);
+    }
+
+    .work-menu-link:hover {
+      color: var(--black);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1400px) {
+      .work-filter-section,
+      .project-table {
+        width: auto;
+        max-width: 1352px;
+        padding-left: 64px;
+        padding-right: 64px;
+      }
+      .work-menu-inner {
+        width: 100%;
+        max-width: 1384px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .row-city { width: 200px; }
+      .row-type { width: 200px; }
+      .row-company { width: 200px; }
+    }
+
+    @media (max-width: 768px) {
+      body.work-page {
+        cursor: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+      }
+      .work-filter-section {
+        padding-top: 100px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .project-table {
+        padding-left: 24px;
+        padding-right: 24px;
+        overflow-x: auto;
+      }
+      .project-row-item { flex-wrap: wrap; }
+      .row-number { width: 40px; }
+      .row-company { width: auto; flex: 1; }
+      .row-type, .row-city { display: none; }
+      .row-date { width: auto; }
+      .work-menu-inner {
+        padding: 15px 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      .work-menu-label { display: none; }
+      .work-menu-links { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .work-filter-section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .project-table {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .row-number { width: 30px; font-size: 11px; }
+      .row-company { font-size: 11px; }
+      .row-date { font-size: 11px; }
+      .work-menu-inner { padding: 15px 16px; }
+      .work-menu-links { gap: 12px; }
+    }
+  </style>
+</head>
+<body class="work-page">
+
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Work — Elouan BEGUE</h1>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="mailto:elouanbeguepro@gmail.com" class="header-left">
+        <span>Open for any</span>
+        <span>collaborations and offers</span>
+      </a>
+      <div class="header-center">
+        <a href="index.html">
+          <svg class="logo" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="header-right">
+        <span>Elouan BEGUE</span>
+        <span>Creative Director</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTER SECTION -->
+  <div class="work-filter-section">
+    <div class="filter-label">FILTER BY</div>
+    <div class="filter-separator"></div>
+    <div class="filter-pills">
+      <button class="filter-pill active" data-sort="favorites">FAVORITES</button>
+      <button class="filter-pill" data-sort="place">PLACE</button>
+      <button class="filter-pill" data-sort="date">DATE</button>
+      <button class="filter-pill" data-sort="az">A&gt;Z</button>
+    </div>
+  </div>
+
+  <!-- PROJECT TABLE -->
+  <div class="project-table" id="projectTable">
+    <a href="work-norphe.html" class="project-row-item" data-company="NORPHE" data-type="APPRENTICESHIP" data-city="PARIS" data-date="2023-01-01" data-order="1">
+      <span class="row-number">01</span>
+      <span class="row-company">NORPHE</span>
+      <span class="row-type">APPRENTICESHIP</span>
+      <span class="row-city">PARIS</span>
+      <span class="row-date">01/01/2023</span>
+    </a>
+    <a href="work-hausze.html" class="project-row-item" data-company="HAUSZE" data-type="ENTREPRENEURSHIP" data-city="MONTREUIL" data-date="2023-12-30" data-order="2">
+      <span class="row-number">02</span>
+      <span class="row-company">HAUSZE</span>
+      <span class="row-type">ENTREPRENEURSHIP</span>
+      <span class="row-city">MONTREUIL</span>
+      <span class="row-date">30/12/2023</span>
+    </a>
+    <a href="work-syno.html" class="project-row-item" data-company="SYNO" data-type="SCHOOL PROJECT" data-city="MONTREUIL" data-date="2022-11-01" data-order="3">
+      <span class="row-number">03</span>
+      <span class="row-company">SYNO</span>
+      <span class="row-type">SCHOOL PROJECT</span>
+      <span class="row-city">MONTREUIL</span>
+      <span class="row-date">01/11/2022</span>
+    </a>
+    <a href="work-allowa.html" class="project-row-item" data-company="ALLOWA" data-type="FREELANCE" data-city="PARIS" data-date="2022-05-01" data-order="4">
+      <span class="row-number">04</span>
+      <span class="row-company">ALLOWA</span>
+      <span class="row-type">FREELANCE</span>
+      <span class="row-city">PARIS</span>
+      <span class="row-date">01/05/2022</span>
+    </a>
+    <a href="work-dina-summer.html" class="project-row-item" data-company="DINA SUMMER" data-type="INTERNSHIP" data-city="BERLIN" data-date="2022-07-01" data-order="5">
+      <span class="row-number">05</span>
+      <span class="row-company">DINA SUMMER</span>
+      <span class="row-type">INTERNSHIP</span>
+      <span class="row-city">BERLIN</span>
+      <span class="row-date">01/07/2022</span>
+    </a>
+    <a href="work-entropy.html" class="project-row-item" data-company="ENTROPY" data-type="ENTREPRENEURSHIP" data-city="PARIS" data-date="2024-03-30" data-order="6">
+      <span class="row-number">06</span>
+      <span class="row-company">ENTROPY</span>
+      <span class="row-type">ENTREPRENEURSHIP</span>
+      <span class="row-city">PARIS</span>
+      <span class="row-date">30/03/2024</span>
+    </a>
+    <a href="work-tetu.html" class="project-row-item" data-company="TETU" data-type="INTERNSHIP" data-city="PARIS" data-date="2021-06-01" data-order="7">
+      <span class="row-number">07</span>
+      <span class="row-company">TETU</span>
+      <span class="row-type">INTERNSHIP</span>
+      <span class="row-city">PARIS</span>
+      <span class="row-date">01/06/2021</span>
+    </a>
+    <a href="work-monkey-vape.html" class="project-row-item" data-company="MONKEY VAPE" data-type="FREELANCE" data-city="PARIS" data-date="2021-01-01" data-order="8">
+      <span class="row-number">08</span>
+      <span class="row-company">MONKEY VAPE</span>
+      <span class="row-type">FREELANCE</span>
+      <span class="row-city">PARIS</span>
+      <span class="row-date">01/01/2021</span>
+    </a>
+  </div>
+
+  <!-- BOTTOM MENU -->
+  <nav class="work-menu">
+    <div class="work-menu-inner">
+      <div class="work-menu-label">SEARCH : <span class="bracket">[WORK]</span></div>
+      <div class="work-menu-links">
+        <a href="index.html" class="work-menu-link" style="cursor:pointer;">ABOUT</a>
+        <a href="work.html" class="work-menu-link active" style="cursor:pointer;">WORK</a>
+        <a href="playground.html" class="work-menu-link" style="cursor:pointer;">PLAYGROUND</a>
+        <a href="contact.html" class="work-menu-link" style="cursor:pointer;">CONTACT</a>
+      </div>
+      <div class="work-menu-label" id="sortLabel">SORT BY : <span class="bracket">[FAVORITES]</span></div>
+    </div>
+  </nav>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    (function () {
+      'use strict';
+
+      // --- STAGGER ROW ENTRANCE ---
+      var rows = document.querySelectorAll('.project-row-item');
+      rows.forEach(function(row, i) {
+        row.style.transition = 'opacity 0.5s ease ' + (i * 0.05) + 's, transform 0.5s ease ' + (i * 0.05) + 's';
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            row.classList.add('visible');
+          });
+        });
+      });
+
+      // --- FILTER PILLS ---
+      var pills = document.querySelectorAll('.filter-pill');
+      var table = document.getElementById('projectTable');
+      var sortLabelEl = document.getElementById('sortLabel');
+
+      var labelMap = { favorites: 'FAVORITES', place: 'PLACE', date: 'DATE', az: 'A>Z' };
+
+      pills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          pills.forEach(function(p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+
+          // Bounce animation
+          pill.style.transform = 'scale(0.9)';
+          setTimeout(function() { pill.style.transform = 'scale(1.05)'; }, 100);
+          setTimeout(function() { pill.style.transform = 'scale(1)'; }, 200);
+
+          var sortBy = pill.dataset.sort;
+
+          // Update bottom menu label
+          if (sortLabelEl) {
+            while (sortLabelEl.firstChild) {
+              sortLabelEl.removeChild(sortLabelEl.firstChild);
+            }
+            sortLabelEl.appendChild(document.createTextNode('SORT BY : '));
+            var labelSpan = document.createElement('span');
+            labelSpan.className = 'bracket';
+            labelSpan.textContent = '[' + (labelMap[sortBy] || 'FAVORITES') + ']';
+            sortLabelEl.appendChild(labelSpan);
+          }
+
+          // Get rows and sort
+          var rowsArr = Array.from(table.querySelectorAll('.project-row-item'));
+
+          rowsArr.sort(function(a, b) {
+            switch (sortBy) {
+              case 'place':
+                return a.dataset.city.localeCompare(b.dataset.city);
+              case 'date':
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
+              case 'az':
+                return a.dataset.company.localeCompare(b.dataset.company);
+              case 'favorites':
+              default:
+                return parseInt(a.dataset.order) - parseInt(b.dataset.order);
+            }
+          });
+
+          // Re-animate rows
+          rowsArr.forEach(function(row) {
+            row.classList.remove('visible');
+            row.style.transition = 'none';
+          });
+
+          // Re-append in new order
+          rowsArr.forEach(function(row, i) {
+            table.appendChild(row);
+            row.querySelector('.row-number').textContent = String(i + 1).padStart(2, '0');
+          });
+
+          // Trigger stagger animation
+          requestAnimationFrame(function() {
+            rowsArr.forEach(function(row, i) {
+              row.style.transition = 'opacity 0.5s ease ' + (i * 0.05) + 's, transform 0.5s ease ' + (i * 0.05) + 's';
+              requestAnimationFrame(function() {
+                row.classList.add('visible');
+              });
+            });
+          });
+        });
+      });
+
+      // --- CUSTOM CURSOR ---
+      var cursor = document.createElement('div');
+      cursor.className = 'cursor';
+      cursor.id = 'cursor';
+      var dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      var circle = document.createElement('div');
+      circle.className = 'cursor-circle';
+      cursor.appendChild(dot);
+      cursor.appendChild(circle);
+      document.body.appendChild(cursor);
+
+      var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isTouchDevice) {
+        var mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+        function animateCursor() {
+          cursorX += (mouseX - cursorX) * 0.15;
+          cursorY += (mouseY - cursorY) * 0.15;
+          cursor.style.transform = 'translate3d(' + cursorX + 'px, ' + cursorY + 'px, 0)';
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elouan BEGUE — Playground</title>
+  <meta name="description" content="Photography playground by Elouan BEGUE — concert, portrait, street and travel photography.">
+  <meta property="og:title" content="Elouan BEGUE — Playground">
+  <meta property="og:description" content="Photography playground by Elouan BEGUE — concert, portrait, street and travel photography.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/playground.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/pg-01.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/playground.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      cursor: none;
+    }
+
+    /* Triple cursor — mirrored on both halves like jasminedeporta.com */
+    .pg-cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      display: none;
+      transform: translate(-6px, -6px);
+      transition: opacity 0.2s ease;
+    }
+
+    .frame {
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .half {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .big-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .half--left .big-img { object-position: center center; }
+    .half--right .big-img { object-position: center center; }
+
+    .small-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 500px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .small-bg {
+      display: none;
+    }
+
+    .small-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      display: block;
+    }
+
+    /* HOVER: only when hovering the small center images */
+    .small-wrap:hover ~ .big-img,
+    .half:has(.small-wrap:hover) .big-img {
+      filter: brightness(1.1);
+    }
+
+    /* Fade out small images when hovering them */
+    .small-wrap {
+      opacity: 1;
+      transition: none;
+    }
+
+    .frame.is-hovering .small-wrap {
+      opacity: 0;
+    }
+
+    .frame.is-hovering .big-img {
+      filter: brightness(1);
+    }
+
+    /* Star Logo */
+    .star-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none;
+      animation: breathe 3s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1.0); }
+      50%      { transform: translate(-50%, -50%) scale(1.03); }
+    }
+
+    /* Full-bleed background — separate element behind halves */
+    .full-bg {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+
+    .frame.full-bleed .full-bg {
+      display: block;
+    }
+
+    .frame.full-bleed .half .big-img {
+      display: none;
+    }
+
+    /* No transition — instant swap */
+
+    /* Bottom Menu */
+    .pg-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: var(--dark, #363636);
+      isolation: isolate;
+    }
+
+    .pg-menu-inner {
+      max-width: 1384px;
+      margin: 0 auto;
+      padding: 15px var(--side-padding, 64px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pg-menu-left {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .pg-menu-left span {
+      font-family: var(--font-sans, 'Neue Montreal', 'Inter', sans-serif);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pg-menu-left .pg-menu-sub {
+      color: var(--grey, #868686);
+      font-weight: 400;
+    }
+
+    .pg-menu-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .pg-menu-link {
+      font-family: var(--font-sans, 'Neue Montreal', 'Inter', sans-serif);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey, #868686);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .pg-menu-link:hover { color: #fff; }
+    .pg-menu-link.active { color: #fff; }
+
+    .pg-menu-follow {
+      font-family: var(--font-sans, 'Neue Montreal', 'Inter', sans-serif);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .pg-menu-follow:hover { opacity: 0.7; }
+
+
+    /* Responsive — Tablet landscape / small laptop (769–1024px) */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .small-wrap {
+        width: 280px;
+        height: 340px;
+      }
+
+      .pg-menu-inner {
+        padding: 15px 32px;
+      }
+
+      .pg-menu-links { gap: 20px; }
+
+      .pg-menu-follow { display: none; }
+    }
+
+    /* Responsive — Mobile & tablet portrait (<=768px) */
+    @media (max-width: 768px) {
+      .frame {
+        flex-direction: row;
+      }
+
+      .half--left { display: none; }
+      .half--right {
+        width: 100%;
+      }
+
+      .small-wrap {
+        width: 240px;
+        height: 300px;
+      }
+
+      .pg-menu-left,
+      .pg-menu-follow {
+        display: none;
+      }
+
+      .pg-menu-inner {
+        justify-content: center;
+        padding: 15px 20px;
+      }
+
+      .pg-menu-links { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .small-wrap {
+        width: 180px;
+        height: 230px;
+      }
+
+      .pg-menu-links { gap: 12px; }
+
+      .star-logo svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Playground — Elouan BEGUE</h1>
+
+  <!-- Triple cursor (mirrored like jasminedeporta.com) -->
+  <div class="pg-cursor" id="cursor1"></div>
+  <div class="pg-cursor" id="cursor2"></div>
+  <div class="pg-cursor" id="cursor3"></div>
+
+  <!-- Split-Screen Frame -->
+  <div class="frame" id="frame">
+    <!-- Full-bleed background (hidden by default, shown when lb===rb) -->
+    <img class="full-bg" id="fullBg" src="" alt="" width="1512" height="945">
+
+    <div class="half half--left" id="halfLeft">
+      <img class="big-img" id="bigLeft" src="" alt="" width="756" height="945">
+      <div class="small-wrap" id="smallWrapLeft">
+        <div class="small-bg"></div>
+        <img class="small-img" id="smallLeft" src="" alt="" width="420" height="500">
+      </div>
+    </div>
+
+    <div class="half half--right" id="halfRight">
+      <img class="big-img" id="bigRight" src="" alt="" width="756" height="945">
+      <div class="small-wrap" id="smallWrapRight">
+        <div class="small-bg"></div>
+        <img class="small-img" id="smallRight" src="" alt="" width="420" height="500">
+      </div>
+    </div>
+
+    <div class="star-logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Bottom Menu -->
+  <nav class="pg-menu">
+    <div class="pg-menu-inner">
+      <div class="pg-menu-left">
+        <span>PLAYGROUND</span>
+        <span class="pg-menu-sub" id="playLabel">FRIENDS : [LAKE]</span>
+      </div>
+      <div class="pg-menu-links">
+        <a href="index.html" class="pg-menu-link">ABOUT</a>
+        <a href="work.html" class="pg-menu-link">WORK</a>
+        <a href="playground.html" class="pg-menu-link active">PLAYGROUND</a>
+        <a href="contact.html" class="pg-menu-link">CONTACT</a>
+      </div>
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener" class="pg-menu-follow">FOLLOW ME &#x2197;</a>
+    </div>
+  </nav>
+
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    (function() {
+      'use strict';
+
+      // ========================================
+      // TRIPLE CURSOR (mirrored like jasminedeporta.com)
+      // ========================================
+      var cursor1 = document.getElementById('cursor1');
+      var cursor2 = document.getElementById('cursor2');
+      var cursor3 = document.getElementById('cursor3');
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+      if (!isMobile) {
+        document.addEventListener('mousemove', function(e) {
+          var x = e.clientX;
+          var y = e.clientY;
+          var halfW = window.innerWidth / 2;
+
+          cursor1.style.display = 'block';
+          cursor2.style.display = 'block';
+          cursor3.style.display = 'block';
+
+          // Main cursor follows mouse
+          cursor1.style.transform = 'translate(' + (x - 6) + 'px, ' + (y - 6) + 'px)';
+          // Mirror cursor — offset by half window width to appear on other half
+          cursor2.style.transform = 'translate(' + (x + halfW - 6) + 'px, ' + (y - 6) + 'px)';
+          cursor3.style.transform = 'translate(' + (x - halfW - 6) + 'px, ' + (y - 6) + 'px)';
+
+          // Hide cursors when over nav area
+          if (y > window.innerHeight - 50) {
+            cursor1.style.display = 'none';
+            cursor2.style.display = 'none';
+            cursor3.style.display = 'none';
+          }
+        });
+
+        document.addEventListener('mouseleave', function() {
+          cursor1.style.display = 'none';
+          cursor2.style.display = 'none';
+          cursor3.style.display = 'none';
+        });
+      }
+
+      // Photo sets — 26 PLAY slides from Figma (exact 4-position mapping per frame)
+      // lb=leftBig, ls=leftSmall, rb=rightBig, rs=rightSmall
+      // When lb===rb, full-bleed mode (one background spanning full width)
+      // HOVER state (smalls fade out) is handled by CSS .is-hovering
+      var P = 'assets/pg-';
+      // null = small overlay hidden on that side (Figma visibility flags + user corrections)
+      var sets = [
+        { lb: P+'01.jpg', ls: P+'02.jpg', rb: P+'02.jpg', rs: P+'01.jpg', label: 'FRIENDS : [LAKE]' },       // PLAY 1
+        { lb: P+'01.jpg', ls: P+'03.jpg', rb: P+'03.jpg', rs: P+'01.jpg', label: 'FRIENDS : [LAKE]' },       // PLAY 2
+        { lb: P+'04.jpg', ls: P+'03.jpg', rb: P+'03.jpg', rs: P+'04.jpg', label: 'FRIENDS : [LAKE]' },       // PLAY 3
+        { lb: P+'04.jpg', ls: P+'03.jpg', rb: P+'05.jpg', rs: null,       label: 'FRIENDS : [CAR]' },        // PLAY 4 (split: fire left + car right, left small only)
+        { lb: P+'05.jpg', ls: P+'03.jpg', rb: P+'05.jpg', rs: P+'01.jpg', label: 'FRIENDS : [CAR]' },        // PLAY 5 (full-bleed car + both smalls)
+        { lb: P+'05.jpg', ls: P+'06.jpg', rb: P+'05.jpg', rs: null,       label: 'CONCERT : [ICHON]' },      // PLAY 6 (full-bleed car, left small only)
+        { lb: P+'07.jpg', ls: P+'06.jpg', rb: P+'06.jpg', rs: P+'07.jpg', label: 'CONCERT : [ICHON]' },      // PLAY 7
+        { lb: P+'07.jpg', ls: P+'08.jpg', rb: P+'08.jpg', rs: P+'07.jpg', label: 'CONCERT : [ICHON]' },      // PLAY 8
+        { lb: P+'08.jpg', ls: P+'09.jpg', rb: P+'09.jpg', rs: P+'08.jpg', label: 'CONCERT : [ICHON]' },      // PLAY 10
+        { lb: P+'10.jpg', ls: P+'09.jpg', rb: P+'09.jpg', rs: P+'10.jpg', label: 'CONCERT : [ICHON]' },      // PLAY 11
+        { lb: P+'10.jpg', ls: P+'11.jpg', rb: P+'11.jpg', rs: P+'10.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 12
+        { lb: P+'12.jpg', ls: P+'11.jpg', rb: P+'11.jpg', rs: null,       label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 13
+        { lb: P+'12.jpg', ls: null,       rb: P+'12.jpg', rs: null,       label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 14 (full-bleed, no smalls)
+        { lb: P+'13.jpg', ls: null,       rb: P+'12.jpg', rs: P+'13.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 15
+        { lb: P+'13.jpg', ls: P+'14.jpg', rb: P+'14.jpg', rs: P+'13.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 16
+        { lb: P+'15.jpg', ls: P+'14.jpg', rb: P+'14.jpg', rs: P+'15.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 17
+        { lb: P+'15.jpg', ls: P+'16.jpg', rb: P+'16.jpg', rs: P+'15.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 18
+        { lb: P+'17.jpg', ls: P+'16.jpg', rb: P+'16.jpg', rs: P+'17.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 19
+        { lb: P+'17.jpg', ls: P+'18.jpg', rb: P+'18.jpg', rs: P+'17.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 20
+        { lb: P+'19.jpg', ls: P+'18.jpg', rb: P+'18.jpg', rs: null,       label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 21
+        { lb: P+'19.jpg', ls: null,       rb: P+'19.jpg', rs: P+'18.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 22
+        { lb: P+'20.jpg', ls: null,       rb: P+'19.jpg', rs: P+'20.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 23
+        { lb: P+'20.jpg', ls: P+'21.jpg', rb: P+'21.jpg', rs: P+'20.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 24
+        { lb: P+'22.jpg', ls: P+'21.jpg', rb: P+'21.jpg', rs: P+'22.jpg', label: 'CONCERT : [ASCENDANT VIERGE]' }, // PLAY 25
+        { lb: P+'22.jpg', ls: P+'23.jpg', rb: P+'23.jpg', rs: P+'22.jpg', label: 'CONCERT : [ICHON]' },      // PLAY 26
+        { lb: P+'24.jpg', ls: P+'23.jpg', rb: P+'23.jpg', rs: P+'24.jpg', label: 'CONCERT : [ICHON]' }       // PLAY 27
+      ];
+
+      var currentSet = 0;
+      var isTransitioning = false;
+      var frame = document.getElementById('frame');
+      var fullBg = document.getElementById('fullBg');
+      var bigLeft = document.getElementById('bigLeft');
+      var bigRight = document.getElementById('bigRight');
+      var smallLeft = document.getElementById('smallLeft');
+      var smallRight = document.getElementById('smallRight');
+      var smallWrapLeft = document.getElementById('smallWrapLeft');
+      var smallWrapRight = document.getElementById('smallWrapRight');
+      var label = document.getElementById('playLabel');
+
+      function applySet(index) {
+        var s = sets[index];
+        // Reset hover state instantly
+        frame.classList.remove('is-hovering');
+        // Backgrounds
+        bigLeft.src = s.lb;
+        bigRight.src = s.rb;
+        // Full-bleed when left and right bigs are the same image
+        if (s.lb === s.rb) {
+          frame.classList.add('full-bleed');
+          fullBg.src = s.lb;
+        } else {
+          frame.classList.remove('full-bleed');
+        }
+        // Small overlays — show or hide
+        if (s.ls) {
+          smallLeft.src = s.ls;
+          smallWrapLeft.style.display = '';
+        } else {
+          smallWrapLeft.style.display = 'none';
+        }
+        if (s.rs) {
+          smallRight.src = s.rs;
+          smallWrapRight.style.display = '';
+        } else {
+          smallWrapRight.style.display = 'none';
+        }
+        label.textContent = s.label;
+      }
+
+      function goToSet(index) {
+        currentSet = index;
+        applySet(currentSet);
+      }
+
+      // Click anywhere = next slide
+      document.getElementById('halfLeft').addEventListener('click', function() {
+        goToSet((currentSet + 1) % sets.length);
+      });
+
+      document.getElementById('halfRight').addEventListener('click', function() {
+        goToSet((currentSet + 1) % sets.length);
+      });
+
+      // Hover on small images = fade them out
+      var smallWraps = document.querySelectorAll('.small-wrap');
+      smallWraps.forEach(function(wrap) {
+        wrap.addEventListener('mouseenter', function() {
+          frame.classList.add('is-hovering');
+        });
+        wrap.addEventListener('mouseleave', function() {
+          frame.classList.remove('is-hovering');
+        });
+        // Click on small image = next slide (stop propagation to prevent double trigger)
+        wrap.addEventListener('click', function(e) {
+          e.stopPropagation();
+          goToSet((currentSet + 1) % sets.length);
+        });
+      });
+
+      // Keyboard navigation — both arrows go next
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') goToSet((currentSet + 1) % sets.length);
+      });
+
+      // Initialize first set on load
+      applySet(0);
+
+    })();
+  </script>
+</body>
+</html>

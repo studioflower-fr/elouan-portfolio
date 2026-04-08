@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elouan BEGUE — Loading</title>
+  <meta name="description" content="Independent Creative Director based in Paris. Art direction, branding, web design, and visual identity.">
+  <meta property="og:title" content="Elouan BEGUE — Creative Director">
+  <meta property="og:description" content="Independent Creative Director based in Paris. Art direction, branding, web design, and visual identity.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elouanbegue.com/loader.html">
+  <meta property="og:image" content="https://elouanbegue.com/assets/hero.jpg">
+  <link rel="canonical" href="https://elouanbegue.com/loader.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Neue Montreal', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .loader-screen {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #ec6741;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .loader-screen.exit {
+      transform: translateY(-100%);
+    }
+
+    .loader-content {
+      display: flex;
+      align-items: center;
+      gap: 150px;
+    }
+
+    .loader-text {
+      font-size: 20px;
+      color: #222;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      white-space: nowrap;
+    }
+
+    .loader-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .loader-text em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .loader-logo {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .loader-logo.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .loader-logo img {
+      width: 189px;
+      height: auto;
+      display: block;
+      animation: logoPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.04) rotate(1.5deg); }
+    }
+
+    .loader-counter {
+      position: fixed;
+      bottom: 30px;
+      right: 64px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #222;
+      z-index: 10000;
+    }
+
+    /* Hidden iframe for preloading index.html */
+    .preload-frame {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 1;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The main site loads underneath -->
+  <iframe class="preload-frame" id="bgFrame" src="index.html"></iframe>
+
+  <!-- Loader overlay -->
+  <div class="loader-screen" id="loaderScreen">
+    <div class="loader-content">
+      <span class="loader-text" id="textLeft"><em>Welcome</em> in my world</span>
+      <div class="loader-logo" id="loaderLogo">
+        <img src="assets/flowerclone-logo.svg" alt="Flowerclone" width="189" height="40">
+      </div>
+      <span class="loader-text" id="textRight">Feel free to <em>explore</em></span>
+    </div>
+  </div>
+
+  <div class="loader-counter" id="counter">0%</div>
+
+  <script>
+    (function() {
+      const counter = document.getElementById('counter');
+      const loaderScreen = document.getElementById('loaderScreen');
+      const textLeft = document.getElementById('textLeft');
+      const loaderLogo = document.getElementById('loaderLogo');
+      const textRight = document.getElementById('textRight');
+      const bgFrame = document.getElementById('bgFrame');
+
+      // Staggered fade-in
+      setTimeout(() => textLeft.classList.add('visible'), 500);
+      setTimeout(() => loaderLogo.classList.add('visible'), 1000);
+      setTimeout(() => textRight.classList.add('visible'), 1500);
+
+      // Background hue shift
+      const startTime = Date.now();
+      const duration = 3000;
+      let currentPercent = 0;
+
+      function updateLoader() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        currentPercent = Math.floor(progress * 100);
+
+        counter.textContent = currentPercent + '%';
+
+        // Subtle hue shift: from #ec6741 toward a warmer/cooler tone
+        const hueShift = progress * 15;
+        const satShift = progress * 5;
+        loaderScreen.style.filter = `hue-rotate(${hueShift}deg) saturate(${1 + satShift / 100})`;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateLoader);
+        } else {
+          // Loading complete — slide up
+          setTimeout(() => {
+            loaderScreen.classList.add('exit');
+            counter.style.transition = 'opacity 0.4s ease';
+            counter.style.opacity = '0';
+
+            // Show the background frame
+            bgFrame.style.transition = 'opacity 0.3s ease';
+            bgFrame.style.opacity = '1';
+
+            // Redirect to index.html after slide animation
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 900);
+          }, 300);
+        }
+      }
+
+      requestAnimationFrame(updateLoader);
+    })();
+  </script>
+</body>
+</html>
