@@ -2,7 +2,7 @@
 
 Personal portfolio of Elouan Begue, independent Creative Director based in Paris.
 
-Live: https://flowerelon.github.io/elouan-portfolio/
+Live: https://studioflower-fr.github.io/elouan-portfolio/
 
 ![Homepage screenshot](docs/homepage.webp)
 
